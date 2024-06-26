@@ -58,7 +58,7 @@ public class AuthenticationController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "cuoco/indexCuoco.html";
+            return "admin/indexAdmin.html";
         }
     	else if(credentials.getRole().equals(Credentials.CUOCO_ROLE)) {
                 return "cuoco/indexCuoco.html";
@@ -75,7 +75,7 @@ public class AuthenticationController {
 			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-				return "cuoco/indexCuoco.html";
+				return "admin/indexAdmin.html";
 			}
 			else if(credentials.getRole().equals(Credentials.CUOCO_ROLE)) {
                 return "cuoco/indexCuoco.html";
