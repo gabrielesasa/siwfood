@@ -60,6 +60,9 @@ public class AuthenticationController {
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "cuoco/indexCuoco.html";
         }
+    	else if(credentials.getRole().equals(Credentials.CUOCO_ROLE)) {
+                return "cuoco/indexCuoco.html";
+    	}
         return "/generico/index.html";
     }
 	@GetMapping(value = "/") 
@@ -74,6 +77,9 @@ public class AuthenticationController {
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 				return "cuoco/indexCuoco.html";
 			}
+			else if(credentials.getRole().equals(Credentials.CUOCO_ROLE)) {
+                return "cuoco/indexCuoco.html";
+    	}
 		}
         return "/generico/index.html";
 	}

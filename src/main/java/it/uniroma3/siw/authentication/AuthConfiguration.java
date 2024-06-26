@@ -21,6 +21,7 @@ public class AuthConfiguration {
 
   public static final String DEFAULT_ROLE = "DEFAULT";
 	public static final String ADMIN_ROLE = "ADMIN";
+	public static final String CUOCO_ROLE = "CUOCO";
 @Autowired
   private DataSource dataSource;
 
@@ -48,8 +49,10 @@ public class AuthConfiguration {
             // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
             .requestMatchers(HttpMethod.POST, "/generico/**").permitAll()
             // solo gli amministratori possono accedere alle pagine admin
-            .requestMatchers(HttpMethod.GET, "/cuoco/**").hasAnyAuthority(ADMIN_ROLE)
-            .requestMatchers(HttpMethod.POST, "/cuoco/**").hasAnyAuthority(ADMIN_ROLE)
+            .requestMatchers(HttpMethod.GET, "/cuoco/**").hasAnyAuthority(CUOCO_ROLE)
+            .requestMatchers(HttpMethod.POST, "/cuoco/**").hasAnyAuthority(CUOCO_ROLE)
+            .requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
+            .requestMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
             // tutti gli utenti autenticati possono accedere alle pagine rimanenti 
             .anyRequest().authenticated()
         // LOGIN: qui definiamo il login
