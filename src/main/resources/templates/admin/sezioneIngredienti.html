@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+</head>
+<body>
+	<h1>ingredienti</h1>
+	<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
+	<ul>
+		<li th:each="ingrediente : ${ingredienti}">
+		<a th:href="@{'/cuoco/ingrediente' + '/' + ${ingrediente.id}}" th:text="${ingrediente.nome} ">cuoco)</a>
+			<a th:href="@{'/admin/aggiornaIngrediente/' + ${ingrediente.id}}">
+				<button type="button">Modifica</button>
+			</a>
+			<a th:href="@{'/admin/cancellaIngrediente/' + ${ingrediente.id}}">
+				<button type="button">Cancella</button>
+			</a>
+		</li>
+		<a th:href="@{'/admin/aggiungiIngrediente/}">
+				<button type="button">Aggiungi</button>
+			</a>
+	</ul>
+</body>
+</html>

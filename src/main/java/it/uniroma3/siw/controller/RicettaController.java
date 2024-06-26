@@ -43,6 +43,11 @@ public class RicettaController {
 		model.addAttribute("ricette", this.ricettaService.findAll());
 		return "/generico/paginaricette.html";
 		}
+	@GetMapping("/admin/sezioneRicette")
+	public String getAdminRicette(Model model) {		
+		model.addAttribute("ricette", this.ricettaService.findAll());
+		return "/admin/sezioneRicette.html";
+		}
 	@GetMapping("/generico/ricetta/{id}")
 	public String getRicetta(@PathVariable("id") Long id, Model model) {
 		Ricetta ricetta=this.ricettaService.findById(id);
@@ -129,6 +134,12 @@ public class RicettaController {
 		ricetta.setNome(nuovoNome);
 		this.ricettaRepository.save(ricetta);
 		return "cuoco/formAggiornaNome.html";
+	}
+	@GetMapping(value="/admin/cancellaRicetta/{id}")
+	public String cancellaCuoco(@PathVariable("id") Long id, Model model) {
+		Ricetta ricetta=this.ricettaService.findById(id);
+		this.ricettaRepository.delete(ricetta);
+		return "admin/indexAdmin.html";
 	}
 }
 

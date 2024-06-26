@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.IngredientePerRicetta;
 import it.uniroma3.siw.model.Ricetta;
@@ -39,6 +40,11 @@ public class IngredienteController {
 	public String visualizzaIngrediente(Model model) {		
 		model.addAttribute("ingredienti", this.ingredienteService.findAll());
 		return "/cuoco/visualizzaIngrediente.html";
+		}
+	@GetMapping("/admin/sezioneIngredienti")
+	public String visualizzaAdminIngrediente(Model model) {		
+		model.addAttribute("ingredienti", this.ingredienteService.findAll());
+		return "/admin/sezioneIngredienti.html";
 		}
 	@GetMapping("/cuoco/aggiungiIngrediente")
 	public String aggiungiIngrediente(Model model) {		
@@ -73,6 +79,12 @@ public class IngredienteController {
 		ingredientiPerRicetta.add(ingredientePerRicetta);
 		this.ingredientePerRicettaRepository.save(ingredientePerRicetta);
 		return "/cuoco/indexCuoco.html";
+	}
+	@GetMapping(value="/admin/cancellaIngrediente/{id}")
+	public String cancellaIngrediente(@PathVariable("id") Long id, Model model) {
+		Ingrediente ingrediente=this.ingredienteService.findById(id);
+		this.ingredienteRepository.delete(ingrediente);
+		return "admin/indexAdmin.html";
 	}
 }
 

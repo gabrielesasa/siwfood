@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.repository.CuocoRepository;
 import it.uniroma3.siw.service.CuocoService;
 
@@ -31,8 +32,22 @@ public class CuocoController {
 		model.addAttribute("cuoco", this.cuocoService.findById(id));
 		return "/generico/cuoco.html";
 	}
-	
-	
+	@GetMapping("/admin/sezioneCuochi")
+	public String getAdminCuoco(Model model) {		
+		model.addAttribute("cuochi", this.cuocoService.findAll());
+		return "/admin/sezioneCuochi.html";
+		}
+	@GetMapping("/admin/aggiornaCuoco/{id}")
+	public String aggiornaCuoco(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("cuoco", this.cuocoService.findById(id));
+		return "/admin/cuoco.html";
+	}
+	@GetMapping(value="/admin/cancellaCuoco/{id}")
+	public String cancellaCuoco(@PathVariable("id") Long id, Model model) {
+		Cuoco cuoco=this.cuocoService.findById(id);
+		this.cuocoRepository.delete(cuoco);
+		return "admin/indexAdmin.html";
+	}
 }
 
 

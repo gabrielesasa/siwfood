@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+</head>
+<body>
+	<h1>Ricette</h1>
+	<div th:if="${ricette==null || ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
+	<ul>
+		<li th:each="ricetta : ${ricette}">
+			<a th:href="@{'/generico/Ricetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome} ">cuoco)</a>
+			<a th:href="@{'/admin/aggiornaRicetta/' + ${ricetta.id}}">
+				<button type="button">Modifica</button>
+			</a>
+			<a th:href="@{'/admin/cancellaRicetta/' + ${ricetta.id}}">
+				<button type="button">Cancella</button>
+			</a>
+		</li>
+		<a th:href="@{'/admin/aggiungiCuoco/}">
+				<button type="button">Aggiungi</button>
+			</a>
+	</ul>
+</body>
+</html>
