@@ -80,12 +80,16 @@ public class IngredienteController {
 		this.ingredientePerRicettaRepository.save(ingredientePerRicetta);
 		return "/cuoco/indexCuoco.html";
 	}
-	@GetMapping(value="/admin/cancellaIngrediente/{id}")
+	@GetMapping(value="/admin/cancellaIngrediente/{id}")						//da fare quando viene cancellato un ingrediente devono essere cancellatte tutte le ricette con quel ingrediente!!!!!!!
 	public String cancellaIngrediente(@PathVariable("id") Long id, Model model) {
 		Ingrediente ingrediente=this.ingredienteService.findById(id);
 		this.ingredienteRepository.delete(ingrediente);
 		return "admin/indexAdmin.html";
 	}
+	@GetMapping("/admin/aggiungiIngrediente")
+	public String adminAggiungiIngrediente(Model model) {		
+		model.addAttribute("ingrediente", new Ingrediente());
+		return "/cuoco/aggiungiIngrediente.html";}
 }
 
 

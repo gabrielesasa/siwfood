@@ -53,17 +53,17 @@ public class RicettaController {
 		Ricetta ricetta=this.ricettaService.findById(id);
 		List<IngredientePerRicetta> ingredienteRicetta=ricetta.getIngredienteRicetta();
 		if(!ingredienteRicetta.isEmpty()) {
-		IngredientePerRicetta ingre=ingredienteRicetta.get(0);									///serve query
+		IngredientePerRicetta ingre=ingredienteRicetta.get(0);									
 		Ingrediente in=ingre.getIngrediente();
 		Long idingrediente=in.getId();
 		model.addAttribute("ingre", this.ingredienteService.findById(idingrediente));}
 		model.addAttribute("ricetta", this.ricettaService.findById(id));
-		return "/generico/ricetta.html";
+		return " /";																		
 	}
 	@PostMapping("cuoco/nuovaRicetta")
 	public String nuovaRicetta(@ModelAttribute("ricetta") Ricetta ricetta, Model model) {
 		this.ricettaRepository.save(ricetta);
-		return "/cuoco/indexCuoco.html";
+		return "/admin/indexAdmin";
 	}
 	@GetMapping("/cuoco/aggiungiRicetta")
 	public String formnuovaRicetta(Model model) {
@@ -140,6 +140,11 @@ public class RicettaController {
 		Ricetta ricetta=this.ricettaService.findById(id);
 		this.ricettaRepository.delete(ricetta);
 		return "admin/indexAdmin.html";
+	}
+	@GetMapping("/admin/aggiungiRicetta")
+	public String adminNuovaRicetta(Model model) {
+		model.addAttribute("ricetta", new Ricetta());
+	    return "cuoco/aggiungiRicetta.html";
 	}
 }
 

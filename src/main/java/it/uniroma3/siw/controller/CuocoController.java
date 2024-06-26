@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.repository.CuocoRepository;
@@ -40,13 +43,31 @@ public class CuocoController {
 	@GetMapping("/admin/aggiornaCuoco/{id}")
 	public String aggiornaCuoco(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("cuoco", this.cuocoService.findById(id));
-		return "/admin/cuoco.html";
+		return "admin/aggiornaCuoco.html";
 	}
 	@GetMapping(value="/admin/cancellaCuoco/{id}")
 	public String cancellaCuoco(@PathVariable("id") Long id, Model model) {
 		Cuoco cuoco=this.cuocoService.findById(id);
 		this.cuocoRepository.delete(cuoco);
 		return "admin/indexAdmin.html";
+	}
+	@GetMapping(value="/admin/aggiungiCuoco")
+	public String aggiungiCuoco( Model model) {
+		model.addAttribute("cuoco", new Cuoco());
+	    return "admin/aggiungiCuoco.html";
+	}
+	@PostMapping("admin/aggiungiCuoco")
+	public String nuovaRicetta(@ModelAttribute("cuoco") Cuoco cuoco, Model model) {
+		this.cuocoRepository.save(cuoco);
+		return "/admin/indexAdmin";
+	}
+	@PostMapping("admin/aggiornaCuoco/{id}")
+	public String formAggiornaNomeRicetta(@PathVariable("id") Long id, @RequestParam("nuovoAnno") Integer nuovoAnno,@RequestParam("nuovoImmagine") String nuovoImmagine, Model model) {
+		Cuoco cuoco=this.cuocoRepository.findById(id).get();
+		cuoco.setYear(nuovoAnno);
+		cuoco.setImmagine(nuovoImmagine);
+		this.cuocoRepository.save(cuoco);
+		return "cuoco/formAggiornaNome.html";
 	}
 }
 
