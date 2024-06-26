@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ricetta</title>
+<link rel="stylesheet" href="/css/stile2.css?version=2" />
+</head>
+<body>
+  <div th:if="${ricetta}">
+    <h1 th:text="${ricetta.nome}"> nome ricetta</h1>
+		<span><img width="30%" th:src=${ricetta.immagine} /></span>
+        <div>Descrizione: <span th:text="'(' + ${ricetta.descrizione} + ')'">descrizione</span></div>
+	 <div>Cuoco: <span th:text="'(' + ${ricetta.cuoco.nome} + ')'">cuoco</span></div>
+	 
+    </div>
+	<ul>
+		<li th:each="ingre : ${ricetta.ingredienteRicetta}">
+			<span th:text="${ingre.ingrediente.nome}"> nome ricetta</span>
+			<span th:text="${ingre.quantita}"> nome ricetta</span>
+		</li>
+	</ul>
+    <div th:unless="${ricetta}">Non esiste</div>
+</body>
+</html>

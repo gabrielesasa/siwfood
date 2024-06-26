@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		SiwFood - Homepage
+	</title>
+	<link rel="stylesheet" href="/css/stile2.css" />
+	
+</head>
+
+<body>
+	<header>
+	
+	
+		<div th:if="${#userDetails}">
+			<span th:text="${#userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${#user}">
+			<a href="/login">Login</a>
+		</div>
+		</div>
+		</div>
+	
+	</header>
+	<h1>SiwFood</h1>
+	
+	<div>
+		<a href="/generico/menu">menu</a>
+
+	</div>
+	<div>
+		<a href="/generico/formRegistrazione">registrazione</a>
+
+	</div>
+	<div>
+		<a href="/generico/login">login</a>
+
+	</div>
+</body>
+
+</html>

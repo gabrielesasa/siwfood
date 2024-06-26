@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Nuova Ricetta
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	
+	
+	<h1>Aggiungi ricetta</h1>
+	<form th:action="@{/cuoco/aggiungiIngredienteRicetta/{ricettaId}/{ingredienteId}(ricettaId=${ricetta.id}, ingredienteId=${ingrediente.id})}" method="POST" th:object="${ingredientePerRicetta}">
+  		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+  		</div>
+		
+		<div>
+			<label>Aggiungi Qunatita:</label> 
+			<span><input type="text" th:field="${ingredientePerRicetta.quantita}" /></span>
+		    <span th:if="${#fields.hasErrors('quantita')}" th:errors="*{quantita}">
+		    </span>
+		</div>
+		<h1>scegli cuoco ricetta</h1>
+	
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

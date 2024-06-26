@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ricetta</title>
+<link rel="stylesheet" href="/css/stile2.css?version=2" />
+</head>
+<body>
+  <div th:if="${cuoco}">
+    <h1 th:text="${cuoco.nome}"> nome cuoco</h1>
+		<span><img width="30%" th:src=${cuoco.immagine} /></span>
+        <div>Anno: <span th:text="'(' + ${cuoco.year} + ')'">anno</span></div>
+    </div>
+    <div th:unless="${cuoco}">Non esist</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+insert into ricetta (id, nome, immagine, descrizione) values(nextval('ricetta_seq'), 'pasta con il tonno', 'https://blog.giallozafferano.it/ilchiccodimais/wp-content/uploads/2023/02/pasta-al-tonno-spaghetti-con-sugo-di-tonno-in-scatola-ricetta-originale-il-chicco-di-mais.jpg', 'una pasta tradizionale presente in tutta italia');
+INSERT INTO ricetta (id, nome, immagine, descrizione) VALUES (nextval('ricetta_seq'), 'Pasta al Pesto', 'https://www.example.com/pesto.jpg', 'Una deliziosa pasta al pesto');
+INSERT INTO ricetta (id, nome, immagine, descrizione) VALUES (nextval('ricetta_seq'), 'Risotto ai Funghi', 'https://www.example.com/risotto.jpg', 'Un gustoso risotto ai funghi');
+INSERT INTO ricetta (id, nome, immagine, descrizione) VALUES (nextval('ricetta_seq'), 'Lasagna alla Bolognese', 'https://www.example.com/lasagna.jpg', 'Una classica lasagna alla bolognese');
+INSERT INTO ricetta (id, nome, immagine, descrizione) VALUES (nextval('ricetta_seq'), 'Gnocchi al Gorgonzola', 'https://www.example.com/gnocchi.jpg', 'Gnocchi con una salsa al gorgonzola');
+INSERT INTO cuoco (id, nome, year, immagine) VALUES (nextval('ricetta_seq'), 'Cracco', 1965, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Carlo_Cracco.JPG/330px-Carlo_Cracco.JPG');
+INSERT INTO cuoco (id, nome, year, immagine) VALUES (nextval('ricetta_seq'), 'Massimo Bottura', 1962, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Massimo_Bottura.jpg/330px-Massimo_Bottura.jpg');
+INSERT INTO cuoco (id, nome, year, immagine) VALUES (nextval('ricetta_seq'), 'Gordon Ramsay', 1966, 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Gordon_Ramsay.jpg/330px-Gordon_Ramsay.jpg');
+INSERT INTO cuoco (id, nome, year, immagine) VALUES (nextval('ricetta_seq'), 'Alain Ducasse', 1956, 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Alain_Ducasse_2018.jpg/330px-Alain_Ducasse_2018.jpg');
+INSERT INTO cuoco (id, nome, year, immagine) VALUES (nextval('ricetta_seq'), 'Jamie Oliver', 1975, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Jamie_Oliver_%28cropped%29.jpg/330px-Jamie_Oliver_%28cropped%29.jpg');

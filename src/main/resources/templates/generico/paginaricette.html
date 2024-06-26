@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+</head>
+<body>
+	<h1>Ricette</h1>
+	<div th:if="${ricette==null || ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
+	<ul>
+		<li th:each="ricetta : ${ricette}">
+			<a th:href="@{'/generico/ricetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome} ">Up!
+				(2000)</a>
+			<a th:href="@{'/cuoco/aggiungiCuocoRicetta' + '/' + ${ricetta.id}}">Aggiungi cuoco</a>
+		</li>
+	</ul>
+</body>
+</html>

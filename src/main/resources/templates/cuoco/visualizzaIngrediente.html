@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+</head>
+<body>
+	<h1>ingredienti</h1>
+	<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
+	<ul>
+		<li th:each="ingrediente : ${ingredienti}">
+			<a  th:text="${ingrediente.nome} ">Up!
+				(2000)</a>
+		</li>
+	</ul>
+</body>
+</html>
