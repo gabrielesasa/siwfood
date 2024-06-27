@@ -52,7 +52,7 @@ public class AuthenticationController {
             	credentials.setRole("CUOCO");
             	credentialsService.saveCredentials(credentials);
             	model.addAttribute("cuoco", new Cuoco());
-            	return "admin/aggiungiCuoco.html";
+            	return "generico/aggiungiCuoco.html";
             }
             return "/generico/index.html";
     }
