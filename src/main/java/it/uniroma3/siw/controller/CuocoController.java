@@ -5,6 +5,7 @@ package it.uniroma3.siw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.repository.CuocoRepository;
 import it.uniroma3.siw.service.CuocoService;
+import it.uniroma3.siw.validator.CuocoValidator;
+import jakarta.validation.Valid;
 
 @Controller
 public class CuocoController {
@@ -21,6 +24,8 @@ public class CuocoController {
 	private CuocoRepository cuocoRepository;
 	@Autowired
 	private CuocoService cuocoService;
+	@Autowired
+	private CuocoValidator cuocoValidator;
 	@GetMapping("/generico/paginacuochi")
 	public String getCuoco(Model model) {		
 		model.addAttribute("cuochi", this.cuocoService.findAll());
@@ -57,9 +62,13 @@ public class CuocoController {
 	    return "admin/aggiungiCuoco.html";
 	}
 	@PostMapping("admin/aggiungiCuoco")
-	public String nuovaCuoco(@ModelAttribute("cuoco") Cuoco cuoco, Model model) {
+	public String nuovaCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco,BindingResult bindingResult, Model model) {
+		this.cuocoValidator.validate(cuoco, bindingResult);
+		 if (!bindingResult.hasErrors()) {
 		this.cuocoRepository.save(cuoco);
 		return "admin/indexAdmin";
+		 }else
+		return "admin/aggiungiCuoco";
 	}
 	@PostMapping("admin/aggiornaCuoco/{id}")
 	public String formAggiornaNomeCuoco(@PathVariable("id") Long id, @RequestParam("nuovoAnno") Integer nuovoAnno,@RequestParam("nuovoImmagine") String nuovoImmagine, Model model) {

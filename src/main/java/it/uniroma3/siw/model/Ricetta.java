@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Ricetta {
@@ -17,8 +19,10 @@ public class Ricetta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@NotBlank
 	private String nome;
 	private String immagine;
+	@NotNull
 	private String descrizione;
 	@ManyToOne
 	private Cuoco cuoco;

@@ -1,11 +1,16 @@
 
 package it.uniroma3.siw.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="users")//potrebbe non funzionare a causa dell estensione!!!!!!!
@@ -13,11 +18,15 @@ public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)//potrebbe non funzionare a causa dell estensione!!!!!!!
     private Long id;
-
+	@NotBlank
 	private String name;
+	@NotBlank
 	private String surname;
+	@Email
 	private String email;
-
+	@OneToOne
+	private Cuoco cuoco;
+	private boolean sonocuoco;
     public Long getId() {
 		return id;
 	}
@@ -48,5 +57,39 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Cuoco getCuoco() {
+		return cuoco;
+	}
+
+	public void setCuoco(Cuoco cuoco) {
+		this.cuoco = cuoco;
+	}
+
+	public boolean isSonocuoco() {
+		return sonocuoco;
+	}
+
+	public void setSonocuoco(boolean sonocuoco) {
+		this.sonocuoco = sonocuoco;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(id, other.id);
+	}
+	
 }
 

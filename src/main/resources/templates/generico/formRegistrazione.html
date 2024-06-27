@@ -50,7 +50,15 @@
 			<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'">
 			</span>
 		</div>
-		
+		<div>
+            <label>Sei un cuoco?</label>
+            <span>
+                <input type="radio" id="cuocoSi" name="sonocuoco" th:value="true" />
+                <label for="cuocoSi">Sì</label>
+                <input type="radio" id="cuocoNo" name="sonocuoco" th:value="false" />
+                <label for="cuocoNo">No</label>
+            </span>
+        </div>
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>

@@ -33,9 +33,18 @@
 		<div>
 			<label>URL immagine:</label> <span><input type="text" th:field="${ricetta.immagine}" /></span>
 		</div>
-		<h1>scegli cuoco ricett</h1>
-	
+		
 		<div>
+			<label>Scegli cuoco:</label> 
+            <div th:each="cuoco : ${cuochi}">
+                <label>
+                    <input type="radio" th:field="${ricetta.cuoco}" th:value="${cuoco.id}"/> 
+                    <span th:text="${cuoco.nome}"></span>
+                </label>
+            </div>
+			</span>
+		    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+		</div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
 	</form>

@@ -64,7 +64,7 @@ public class RicettaController {
 		Long idingrediente=in.getId();
 		model.addAttribute("ingre", this.ingredienteService.findById(idingrediente));}
 		model.addAttribute("ricetta", this.ricettaService.findById(id));
-		return " /";																		
+		return "/generico/ricetta";																		
 	}
 	@PostMapping("cuoco/nuovaRicetta")
 	public String nuovaRicetta(@ModelAttribute("ricetta") Ricetta ricetta, Model model) {
@@ -74,6 +74,7 @@ public class RicettaController {
 	@GetMapping("/cuoco/aggiungiRicetta")
 	public String formnuovaRicetta(Model model) {
 		model.addAttribute("ricetta", new Ricetta());
+		model.addAttribute("cuochi",this.cuocoRepository.findAll());
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    if (authentication != null && authentication.isAuthenticated()) {
 	        for (GrantedAuthority auth : authentication.getAuthorities()) {
@@ -161,6 +162,7 @@ public class RicettaController {
 	@GetMapping("/admin/aggiungiRicetta")
 	public String adminNuovaRicetta(Model model) {
 		model.addAttribute("ricetta", new Ricetta());
+		model.addAttribute("cuochi",this.cuocoRepository.findAll());
 	    return "cuoco/aggiungiRicetta.html";
 	}
 	@GetMapping("admin/aggiornaRicetta/{ricettaid}")

@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.UserRepository;
@@ -37,8 +39,8 @@ public class AuthenticationController {
 		return "/generico/formRegistrazione.html";
 		}
 	@PostMapping("/generico/registrazione")
-    public String registerUser(@ModelAttribute("user") User user,
-                 @ModelAttribute("credentials") Credentials credentials,
+    public String registerUser(@RequestParam("sonocuoco") boolean sonocuoco,@ModelAttribute("user") User user,
+                 @ModelAttribute("credentials") Credentials credentials,@ModelAttribute("cuoco") Cuoco cuoco,
                  Model model) {
 
         // se user e credential hanno entrambi contenuti validi, memorizza User e the Credentials nel DB 
@@ -46,6 +48,12 @@ public class AuthenticationController {
             credentialsService.saveCredentials(credentials);
             userService.saveUser(user);
             model.addAttribute("user", user);
+            if(sonocuoco) {
+            	credentials.setRole("CUOCO");
+            	credentialsService.saveCredentials(credentials);
+            	model.addAttribute("cuoco", new Cuoco());
+            	return "admin/aggiungiCuoco.html";
+            }
             return "/generico/index.html";
     }
 	@GetMapping(value = "/login") 
