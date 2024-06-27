@@ -56,7 +56,7 @@ public class AuthenticationController {
             }
             return "/generico/index.html";
     }
-	@GetMapping(value = "/login") 
+	@GetMapping(value = "generico/login") 
 	public String showLoginForm (Model model) {
 		return "/generico/formLogin";
 	}
