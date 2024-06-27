@@ -3,37 +3,38 @@
 
 <head>
 	<title>
-		New Movie
+		Nuova Ricetta
 	</title>
 	<link rel="stylesheet" href="/css/stile.css" />
 </head>
 
 <body>
-	<header>
-		
-	</header>
-
-	<h1>Aggiorna film</h1>
+	
+	
+	<h1>Aggiorna Ricetta</h1>
 	<div th:if="${ricetta}">
-		<div>
-			<span th:text="${ricetta.nome}">Up!</span>
-			<a th:href="@{'/cuoco/aggiornaNome/' + ${ricetta.id}}">
-				<button type="button">Modifica nome</button>
-			</a>
-		</div>
+    <h1 th:text="${ricetta.nome}"> nome ricett</h1>
 		
-		<div>
-			<a th:href="@{'/cuoco/aggiungiIngredienteRicetta'+ '/' + ${ricetta.id}}">Aggiungi ingredienti</a>
-		</div>
-		<div>
-			<span>Cuoco: </span><span th:text="${ricetta.cuoco.nome}">Steven
-				Spielberg</span>
-			<a th:href="@{'/cuoco/aggiungiCuocoRicetta' + '/' + ${ricetta.id}}">Modifica cuoco</a>
-		</div>
-		
+	<form th:action="@{/cuoco/aggiornaRicetta/{ricettaid}(ricettaid=${ricetta.id})}" method="POST" th:object="${ricetta}">
+  		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+  		</div>
 		
 
-		
+		<div>
+			<label>descizione:</label> <span><input type="text" name="nuovaDescrizione" placeholder="Nuova Descrizione" th:value="${ricetta.descrizione}" /></span>
+		    <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}">
+		    </span>
+		</div>
+
+		<div>
+			<label>URL immagine:</label> <span><input type="text" name="nuovaImmagine" placeholder="Nuova immagine" th:value="${ricetta.immagine}" /></span>
+		</div>
+	
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
 </body>
 
 </html>

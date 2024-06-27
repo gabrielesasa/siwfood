@@ -48,8 +48,8 @@ public class AuthConfiguration {
             .requestMatchers(HttpMethod.GET, "/", "/generico/**", "/register", "/css/**", "/images/**", "favicon.ico").permitAll()
             // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
             .requestMatchers(HttpMethod.POST, "/generico/**").permitAll()
-            .requestMatchers(HttpMethod.GET, "/admin/**", "/cuoco/aggiungiRicetta","/cuoco/aggiungiIngrediente.html","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta").hasAnyAuthority(ADMIN_ROLE)
-            .requestMatchers(HttpMethod.POST, "/admin/**","/cuoco/nuovaRicetta","/cuoco/nuovoIngrediente").hasAnyAuthority(ADMIN_ROLE)
+            .requestMatchers(HttpMethod.GET, "/admin/**", "/cuoco/aggiungiRicetta","/cuoco/aggiungiIngrediente.html","/cuoco/aggiornaRicetta/**","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta","/cuoco/aggiungiRicetta").hasAnyAuthority(ADMIN_ROLE)
+            .requestMatchers(HttpMethod.POST, "/admin/**","/cuoco/nuovaRicetta","/cuoco/nuovoIngrediente","/cuoco/aggiornaRicetta/**").hasAnyAuthority(ADMIN_ROLE)
             // solo gli amministratori possono accedere alle pagine admin
             .requestMatchers(HttpMethod.GET, "/cuoco/**").hasAnyAuthority(CUOCO_ROLE)
             .requestMatchers(HttpMethod.POST, "/cuoco/**").hasAnyAuthority(CUOCO_ROLE)

@@ -4,9 +4,11 @@ package it.uniroma3.siw.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.IngredientePerRicetta;
 import it.uniroma3.siw.model.Ricetta;
 import it.uniroma3.siw.repository.CuocoRepository;
 import it.uniroma3.siw.repository.RicettaRepository;
+import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.CuocoService;
 import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.RicettaService;
@@ -38,6 +42,8 @@ public class RicettaController {
 	private CuocoService cuocoService;
 	@Autowired
 	private CuocoRepository cuocoRepository;
+	@Autowired 
+	private CredentialsService credentialsService;
 	@GetMapping("/generico/paginaricette")
 	public String getRicette(Model model) {		
 		model.addAttribute("ricette", this.ricettaService.findAll());
@@ -123,17 +129,28 @@ public class RicettaController {
 		this.ricettaRepository.delete(ricetta);
 		return "cuoco/cancellaRicetta.html";
 	}
-	@GetMapping("cuoco/aggiornaNome/{ricettaid}")
-	public String formAggiornaNomeRicetta(@PathVariable("ricettaid") Long id, Model model) {
-		model.addAttribute("ricetta", ricettaRepository.findById(id).get());
-		return "cuoco/formAggiornaNome.html";
-	}
-	@PostMapping("cuoco/formAggiornaNome/{id}")
-	public String formAggiornaNomeRicetta(@PathVariable("id") Long id, @RequestParam("nuovoNome") String nuovoNome, Model model) {
+	
+	@PostMapping("cuoco/aggiornaRicetta/{id}")
+	public String formAggiornaNomeRicetta(@PathVariable("id") Long id, @RequestParam("nuovaDescrizione") String nuovaDescrizione,@RequestParam("nuovaImmagine") String nuovaImmagine, Model model) {
 		Ricetta ricetta=this.ricettaRepository.findById(id).get();
-		ricetta.setNome(nuovoNome);
+		ricetta.setDescrizione(nuovaDescrizione);
+		ricetta.setImmagine(nuovaImmagine);
 		this.ricettaRepository.save(ricetta);
-		return "cuoco/formAggiornaNome.html";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication instanceof AnonymousAuthenticationToken) {
+	        return "/generico/index.html";
+		}
+		else {		
+			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+				return "admin/indexAdmin.html";
+			}
+			else if(credentials.getRole().equals(Credentials.CUOCO_ROLE)) {
+                return "cuoco/indexCuoco.html";
+    	}
+		}
+        return "/generico/index.html";
 	}
 	@GetMapping(value="/admin/cancellaRicetta/{id}")
 	public String cancellaCuoco(@PathVariable("id") Long id, Model model) {
@@ -145,6 +162,12 @@ public class RicettaController {
 	public String adminNuovaRicetta(Model model) {
 		model.addAttribute("ricetta", new Ricetta());
 	    return "cuoco/aggiungiRicetta.html";
+	}
+	@GetMapping("admin/aggiornaRicetta/{ricettaid}")
+	public String adminFormAggiornaRicetta(@PathVariable("ricettaid") Long id, Model model) {
+		model.addAttribute("cuochi", cuocoRepository.findAll());
+		model.addAttribute("ricetta", ricettaRepository.findById(id).get());
+		return "cuoco/formAggiornaRicetta.html";
 	}
 }
 

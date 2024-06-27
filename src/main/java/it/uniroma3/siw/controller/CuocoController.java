@@ -57,17 +57,17 @@ public class CuocoController {
 	    return "admin/aggiungiCuoco.html";
 	}
 	@PostMapping("admin/aggiungiCuoco")
-	public String nuovaRicetta(@ModelAttribute("cuoco") Cuoco cuoco, Model model) {
+	public String nuovaCuoco(@ModelAttribute("cuoco") Cuoco cuoco, Model model) {
 		this.cuocoRepository.save(cuoco);
-		return "/admin/indexAdmin";
+		return "admin/indexAdmin";
 	}
 	@PostMapping("admin/aggiornaCuoco/{id}")
-	public String formAggiornaNomeRicetta(@PathVariable("id") Long id, @RequestParam("nuovoAnno") Integer nuovoAnno,@RequestParam("nuovoImmagine") String nuovoImmagine, Model model) {
+	public String formAggiornaNomeCuoco(@PathVariable("id") Long id, @RequestParam("nuovoAnno") Integer nuovoAnno,@RequestParam("nuovoImmagine") String nuovoImmagine, Model model) {
 		Cuoco cuoco=this.cuocoRepository.findById(id).get();
 		cuoco.setYear(nuovoAnno);
 		cuoco.setImmagine(nuovoImmagine);
 		this.cuocoRepository.save(cuoco);
-		return "cuoco/formAggiornaNome.html";
+		return "admin/indexAdmin.html";
 	}
 }
 
