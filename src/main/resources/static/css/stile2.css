@@ -28,12 +28,24 @@ header {
             margin-left: 15em;
             font-family: 'Lato', sans-serif; /* Cambia il font dei link */
         }
+        .header-links2 {
+            display: flex;
+            gap: 15em; /* Spazio tra i link */
+            margin-left: 24em;
+            font-family: 'Lato', sans-serif; /* Cambia il font dei link */
+        }
 
         header a { 
             text-decoration: none; 
             color: white; /* Cambia il colore del testo dei link per adattarsi al nuovo background */
             font-size: 3em; /* Puoi modificare la dimensione del font se necessario */
         }
+        .header-links a:hover {
+    color: #8080ff;
+}
+   .header-links2 a:hover {
+    color: #8080ff;
+}
 .main-section {
     display: flex;
     justify-content: center; /* Centra orizzontalmente il contenuto */
