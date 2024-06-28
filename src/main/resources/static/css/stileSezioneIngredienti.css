@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -70,10 +71,17 @@ h1 {
     text-align: center; /* Allinea il titolo al centro */
     margin-top: 20px; /* Margine superiore */
     color: #ffffff; /* Testo bianco */
-    font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
+    font-family: 'Forum', serif; /* Font personalizzato */
     font-size: 2.5em; /* Dimensione del font */
 }
-
+.h1-ingre {
+    text-align: center; /* Allinea il titolo al centro */
+    margin-top: 7%; /* Margine superiore */
+    margin-bottom: -7%; /* Margine superiore */
+    color: #ffffff; /* Testo bianco */
+    font-family: 'Forum', serif; /* Font personalizzato */
+    font-size: 400%; /* Dimensione del font */
+}
 ul {
     list-style-type: none; /* Rimuove i punti elenco */
     padding: 0; /* Padding interno */
@@ -88,6 +96,14 @@ li {
     border-radius: 5px; /* Bordo arrotondato */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra */
 }
+.li-ingre {
+    background-color: rgba(255, 255, 255, 0.8); /* Sfondo bianco traslucido */
+    padding: 25px; /* Padding interno */
+    margin-bottom: 10%; /* Margine inferiore */
+    margin-top: 36%; /* Margine inferiore */
+    border-radius: 5px; /* Bordo arrotondato */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra */
+}
 
 a {
     text-decoration: none; /* Rimuove la sottolineatura */
@@ -98,7 +114,15 @@ a {
 a:hover {
     color: #0056b3; /* Cambia il colore al passaggio del mouse */
 }
-
+.a-ingre{
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #007bff; /* Colore del link */
+    transition: color 0.3s ease; /* Transizione del colore */
+    padding: 15px; /* Padding interno */
+   position: centre;
+    font-size:140%;
+    
+}
 button {
     background-color: #007bff; /* Colore di sfondo del bottone */
     color: white; /* Colore del testo del bottone */

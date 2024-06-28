@@ -2,10 +2,9 @@
 <html>
 <head>
 <title>Menu</title>
-<link rel="stylesheet" href="/css/stileSezioneIngredienti.css" />
 </head>
 <body>
-	<h1>INGREDIENTI</h1>
+	<h1>ingredienti</h1>
 	<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
 	<ul>
 		<li th:each="ingrediente : ${ingredienti}">

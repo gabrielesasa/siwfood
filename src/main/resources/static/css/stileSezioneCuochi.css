@@ -22,7 +22,7 @@ body::before {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.8); /* Sfondo bianco traslucido */
+    background-color: #FFFFFF; /* Sfondo bianco traslucido */
     color: black; /* Testo nero per contrastare il background */
     height: 3em; /* Altezza dell'header */
     padding: 1em; /* Padding per un aspetto più grande */
@@ -63,7 +63,39 @@ header {
     max-width: 180px; /* Imposta una larghezza massima per l'immagine del logo */
     height: auto; /* Mantiene le proporzioni dell'immagine */
 }
+.header-links3 a:hover {
+    color: #ff0000; /* Cambia il colore al passaggio del mouse */
+}
 
+.img1 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%; /* Altezza della sezione logo */
+    margin-bottom: -10em; /* Margine inferiore */
+    margin-left: 2em;
+}
+
+.img1 img {
+    max-width: 100%; /* Imposta una larghezza massima per l'immagine del logo */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+}
+label.label1{
+	text-align: center;
+	margin-top: 200px; /* Allinea il titolo al centro */
+    margin-left: 400px; /* Margine superiore */
+    color: #ffffff; /* Testo bianco */
+    font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
+    font-size: 2.5em; /* Dimens*/
+}
+label.label2{
+	text-align: center; /* Allinea il titolo al centro */
+    margin-bottom: -7em; /* Margine superiore */
+    margin-left: 400px;
+    color: #ffffff; /* Testo bianco */
+    font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
+    font-size: 2.5em; /* Dimens*/
+}
 h1 {
     text-align: center; /* Allinea il titolo al centro */
     margin-top: 20px; /* Margine superiore */
@@ -71,7 +103,18 @@ h1 {
     font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
     font-size: 2.5em; /* Dimensione del font */
 }
-
+h2 {
+    text-align: center; /* Allinea il titolo al centro */
+    margin-top: 20px; /* Margine superiore */
+    color:  #007bff;; /* Testo bianco */
+    font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
+    font-size: 2.5em; /* Dimensione del font */
+    color: #007bff; /* Colore interno del testo (blu) */
+    text-shadow: -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+}
 ul {
     list-style-type: none; /* Rimuove i punti elenco */
     padding: 0; /* Padding interno */

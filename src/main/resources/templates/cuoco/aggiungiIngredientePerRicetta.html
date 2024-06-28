@@ -5,14 +5,15 @@
 	<title>
 		Nuova Ricetta
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="stylesheet" href="/css/stileSezioneIngredienti.css" />
 </head>
 
 <body>
 	
 	
-	<h1>Aggiungi ricetta</h1>
+	<h1 class="h1-ingre">Aggiungi Quantita</h1>
 	<form th:action="@{/cuoco/aggiungiIngredienteRicetta/{ricettaId}/{ingredienteId}(ricettaId=${ricetta.id}, ingredienteId=${ingrediente.id})}" method="POST" th:object="${ingredientePerRicetta}">
+  		<ul><li class="li-ingre">
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>
@@ -23,11 +24,12 @@
 		    <span th:if="${#fields.hasErrors('quantita')}" th:errors="*{quantita}">
 		    </span>
 		</div>
-		<h1>scegli cuoco ricetta</h1>
+		</li><li>
 	
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
+		</li></ul>
 	</form>
 </body>
 

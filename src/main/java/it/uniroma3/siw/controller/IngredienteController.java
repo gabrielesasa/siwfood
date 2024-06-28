@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.model.Ingrediente;
@@ -91,6 +92,19 @@ public class IngredienteController {
 	public String adminAggiungiIngrediente(Model model) {		
 		model.addAttribute("ingrediente", new Ingrediente());
 		return "/cuoco/aggiungiIngrediente.html";}
+
+@GetMapping("/admin/aggiornaIngrediente/{id}")
+public String adminAggiungiIngrediente(@PathVariable("id") Long id,Model model) {		
+	model.addAttribute("ingrediente", this.ingredienteRepository.findById(id).get());
+	return "/admin/aggiornaIngrediente.html";}
+
+@PostMapping("/admin/aggiornaIngrediente")
+public String adminAggiungiIngrediente2(@RequestParam("id") Long id,@RequestParam("nuovoNome") String nuovoNome,Model model) {		
+	Ingrediente ingrediente = this.ingredienteRepository.findById(id).get();
+	ingrediente.setNome(nuovoNome);
+	this.ingredienteRepository.save(ingrediente);
+	return "/admin/aggiornaIngrediente.html";}
 }
+
 
 

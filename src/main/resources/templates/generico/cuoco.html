@@ -2,13 +2,17 @@
 <html>
 <head>
 <title>Ricetta</title>
-<link rel="stylesheet" href="/css/stile2.css?version=2" />
+<link rel="stylesheet" href="/css/stileSezioneCuochi.css" />
 </head>
 <body>
+<header>
+
+</header>
   <div th:if="${cuoco}">
-    <h1 th:text="${cuoco.nome}"> nome cuoco</h1>
-		<span><img width="30%" th:src=${cuoco.immagine} /></span>
-        <div>Anno: <span th:text="'(' + ${cuoco.year} + ')'">anno</span></div>
+   <label class="label1">Nome:  <split th:text="${cuoco.nome}"> nome cuoco</split></label>
+		<div class="img1">
+		<img  th:src=${cuoco.immagine} /></div>
+    <label class="label2">Anno: <span th:text="'(' + ${cuoco.year} + ')'">anno</span></label>
     </div>
     <div th:unless="${cuoco}">Non ess</div>
 </body>

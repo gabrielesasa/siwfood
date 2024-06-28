@@ -5,7 +5,7 @@
 	<title>
 		Nuova Ricetta
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="stylesheet" href="/css/stilericetta.css" />
 </head>
 
 <body>
@@ -16,6 +16,7 @@
     <h1 th:text="${ricetta.nome}"> nome ricett</h1>
 		
 	<form th:action="@{/cuoco/aggiornaRicetta/{ricettaid}(ricettaid=${ricetta.id})}" method="POST" th:object="${ricetta}">
+	<ul><li>
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>
@@ -26,14 +27,16 @@
 		    <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}">
 		    </span>
 		</div>
-
+	</li><li>
 		<div>
 			<label>URL immagine:</label> <span><input type="text" name="nuovaImmagine" placeholder="Nuova immagine" th:value="${ricetta.immagine}" /></span>
 		</div>
-	
+	</li><li>
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
+		</li>
+		</ul>
 	</form>
 </body>
 

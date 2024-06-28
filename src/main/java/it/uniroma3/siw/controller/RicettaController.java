@@ -112,10 +112,11 @@ public class RicettaController {
 	    
 	    return "cuoco/aggiungiIngredienteRicetta.html";
 	}
-	@GetMapping("/cuoco/AggiornaRicette")
+
+	@GetMapping("/cuoco/sezioneRicette2")
 	public String AggiornaRicette(Model model) {
 		model.addAttribute("ricette",this.ricettaRepository.findAll());
-	    return "cuoco/aggiornaRicette.html";
+	    return "cuoco/sezioneRicette2.html";
 	}
 	@GetMapping("/cuoco/cancellaRicetta")
 	public String CancellaRicette(Model model) {

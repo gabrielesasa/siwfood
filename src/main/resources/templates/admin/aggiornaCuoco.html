@@ -5,35 +5,39 @@
 	<title>
 		Nuova Ricetta
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="stylesheet" href="/css/stileSezioneCuochi.css" />
 </head>
 
 <body>
 	
-	
-	<h1>Aggiorna Cuoco</h1>
+	<header></header>
+	<h2>Aggiorna Cuoco</h2>
 	<div th:if="${cuoco}">
-    <h1 th:text="${cuoco.nome}"> nome cuoco</h1>
-		
+    <h2 th:text="${cuoco.nome}"> nome cuoco</h2>
+	<ul>
 	<form th:action="@{/admin/aggiornaCuoco/{id}(id=${cuoco.id})}" method="POST" th:object="${cuoco}">
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>
 		
-
+		<li>
 		<div>
-			<label>Anno:</label> <span><input type="text" name="nuovoAnno" placeholder="Nuovo anno" th:value="${cuoco.year}" /></span>
+			<a>Anno:</a> <span><input type="text" name="nuovoAnno" placeholder="Nuovo anno" th:value="${cuoco.year}" /></span>
 		    <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">
 		    </span>
 		</div>
-
+		</li>
+		<li>
 		<div>
-			<label>URL immagine:</label> <span><input type="text" name="nuovoImmagine" placeholder="Nuovo immagine" th:value="${cuoco.immagine}" /></span>
+			<a>URL immagine:</a> <span><input type="text" name="nuovoImmagine" placeholder="Nuovo immagine" th:value="${cuoco.immagine}" /></span>
 		</div>
-	
+	   </li>
+		<li>
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
+		</li>
+		</ul>	
 	</form>
 </body>
 

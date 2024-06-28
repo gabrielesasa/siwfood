@@ -5,29 +5,32 @@
 	<title>
 		Nuovo Ingrediente
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="stylesheet" href="/css/stileSezioneIngredienti.css" />
 </head>
 
 <body>
 	
 	
-	<h1>Aggiungi Ingrediente</h1>
+	<h1 class="h1-ingre">Aggiungi Ingrediente</h1>
 	<form th:action="@{/cuoco/nuovoIngrediente}" method="POST" th:object="${ingrediente}">
+	<ul><li class="li-ingre">
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>
 		
 		<div>
-			<label>Nome:</label> 
+			<a class="a-ingre">Nome:</a> 
 			<span><input type="text" th:field="${ingrediente.nome}" /></span>
 		    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
 		    </span>
 		</div>
 
-		
+		</li><li>
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
+		</li>
+		</ul>
 	</form>
 </body>
 

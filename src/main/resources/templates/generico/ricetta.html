@@ -2,22 +2,23 @@
 <html>
 <head>
 <title>Ricetta</title>
-<link rel="stylesheet" href="/css/stile2.css?version=2" />
+<link rel="stylesheet" href="/css/stilePiatto.css" />
 </head>
 <body>
-  <div th:if="${ricetta}">
-    <h1 th:text="${ricetta.nome}"> nome ricetta</h1>
-		<span><img width="30%" th:src=${ricetta.immagine} /></span>
-        <div>Descrizione: <span th:text="'(' + ${ricetta.descrizione} + ')'">descrizione</span></div>
-	 <div>Cuoco: <span th:text="'(' + ${ricetta.cuoco.nome} + ')'">cuoco</span></div>
-	 
-    </div>
-	<ul>
-		<li th:each="ingre : ${ricetta.ingredienteRicetta}">
-			<span th:text="${ingre.ingrediente.nome}"> nome ricetta</span>
-			<span th:text="${ingre.quantita}"> nome ricetta</span>
-		</li>
-	</ul>
-    <div th:unless="${ricetta}">Non esiste</div>
+
+  <div class="recipe-container" th:if="${ricetta}">
+    <div class="background-image" th:style="'background-image: url(' + ${ricetta.immagine} + ')'">
+      <h1 class="recipe-name" th:text="${ricetta.nome}">nome ricetta</h1>
+      <div class="recipe-description" th:text="${ricetta.descrizione}">descrizione</div>
+    </div>
+    <div class="cuoco-info" th:if="${ricetta.cuoco}">
+      
+    </div>
+    <div class="cuoco-info" th:if="${ricetta.cuoco}">
+    	<a th:href="@{'/generico/cuoco' + '/' + ${ricetta.cuoco.id}}" class="button" text="Cuoco delle Ricetta">Cuoco</a>
+    </ul>
+    <a th:href="@{'/generico/visualizzaIngredienteRicetta'+ '/' + ${ricetta.id} }" class="button" text="Ingrediente">Ingredienti</a>
+  </div>
+  <div th:unless="${ricetta}">Non esiste</div>
 </body>
 </html>

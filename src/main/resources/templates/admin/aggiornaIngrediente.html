@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Nuova Ricetta
+	</title>
+	<link rel="stylesheet" href="/css/stileSezioneIngredienti.css" />
+</head>
+
+<body>
+	
+	<header></header>
+	<div th:if="${ingrediente}">
+	<h1 class="h1-ingre" th:text="${ingrediente.nome}"> nome Ingrediente></h1>
+	<form th:action="@{/admin/aggiornaIngrediente}" method="POST" >
+	<input type="hidden" name="id" th:value="${ingrediente.id}" />
+	<ul><li class="li-ingre">
+		
+		
+		<div>
+			<a>Nome:</a> <span><input type="text" name="nuovoNome" placeholder="Nuovo nome" th:value="${ingrediente.nome}" /></span>
+		    
+		    </span>
+		</div>
+		</li>
+		<li>
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+		</li>
+		</ul>	
+	</form>
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -24,7 +25,7 @@ header {
             display: flex;
             gap: 6em; /* Spazio tra i link */
             margin-left: 77em;
-            font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+            font-family: 'Forum', sans-serif; /* Cambia il font dei link */
             font-style: italic;
         }
    
@@ -44,6 +45,8 @@ h1 {
     text-align: left;
     margin-top: 20px;
     color: #ffffff;
+    font-family: 'Forum', sans-serif; /* Cambia il font dei link */
+    font-size:300%;
 }
 
 ul {
@@ -51,6 +54,8 @@ ul {
     padding: 0;
     margin: 2; /* Aggiunto 0 margin top e 20px margin bottom */
     max-width: 600px;
+    font-family: 'Forum', sans-serif; /* Cambia il font dei link */
+    font-size:150%;
 }
 
 li {
@@ -63,7 +68,7 @@ li {
 
 a {
     text-decoration: none;
-    color: #007bff;
+    color: #400040;
     transition: color 0.3s ease;
 }
 
