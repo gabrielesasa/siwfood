@@ -46,6 +46,7 @@ public class CuocoController {
 		model.addAttribute("cuochi", this.cuocoService.findAll());
 		return "/generico/paginacuochi.html";
 		}
+	
 	@GetMapping("/generico/menu")
 	public String getmenu() {		
 		return "/generico/menu.html";

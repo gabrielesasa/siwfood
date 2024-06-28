@@ -66,6 +66,10 @@ public class RicettaController {
 		model.addAttribute("ricetta", this.ricettaService.findById(id));
 		return "/generico/ricetta";																		
 	}
+	@GetMapping("/cuoco/sezioneRicette")
+	public String getpaginaCuochi() {
+		return "/cuoco/sezioneRicette.html";
+		}
 	@PostMapping("cuoco/nuovaRicetta")
 	public String nuovaRicetta(@ModelAttribute("ricetta") Ricetta ricetta, Model model) {
 		this.ricettaRepository.save(ricetta);

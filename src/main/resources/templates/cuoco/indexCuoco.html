@@ -10,40 +10,21 @@
 
 <body>
 	<header>
-		<a href="/logout">Logout</a>
-		<div th:if="${#userDetails}">
-			<span th:text="${#userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${#user}">
-			<a href="/login">Login</a>
+		<div class="header-links3">
+            <a href="/generico/menu">Ricettario</a>
+            <a href="/cuoco/sezioneRicette">Sezione Ricette</a>
+           <a href="/cuoco/sezioneIngredienti">Sezione Ingredinti</a>
+           <a href="/logout"> Logout</a>
+        </div>
 	</header>
-	<h1>SiwFood</h1>
+	<div class="main-section">
+        <div class="centered-photo">
+            <img src="/images/logonero.png" alt="Descrizione della foto">
+        </div>
+    </div>
 	
-	<div>
-		<a href="generico/menu">menu</a>
 
-	</div>
-	<div>
-		<a href="cuoco/aggiungiRicetta">nuova ricetta</a>
-
-	</div>
-	<div>
-		<a href="cuoco/aggiungiIngredienteRicetta">aggiungi ingrediente a ricetta</a>
-
-	</div>
-	<div>
-		<a href="cuoco/ingredienti">sezione dedicata agli ingredienti</a>
-
-	</div>
-	<div>
-		<a href="cuoco/AggiornaRicette">aggiorna ricetta</a>
-
-	</div>
-	<div>
-		<a href="cuoco/cancellaRicetta">caneclla Ricetta</a>
-
-	</div>
+	
 </body>
 
 </html>

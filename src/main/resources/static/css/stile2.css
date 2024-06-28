@@ -11,9 +11,9 @@ body {
 }
 
 header {
-     background-color: rgba(0, 0, 0, 0.6); /* Sfondo nero traslucido */
+     background-color:white; /* Sfondo nero traslucido */
             color: white; /* Testo bianco per contrastare il background nero */
-            height: 3em; /* Aumenta l'altezza dell'header */
+            height: 1.3em; /* Aumenta l'altezza dell'header */
             margin-bottom: 0.5em;
             padding: 1.3em; /* Aumenta il padding per un aspetto più grande */
             text-align: right; 
@@ -24,27 +24,41 @@ header {
 
         .header-links {
             display: flex;
-            gap: 10em; /* Spazio tra i link */
-            margin-left: 15em;
-            font-family: 'Lato', sans-serif; /* Cambia il font dei link */
+            gap: 6em; /* Spazio tra i link */
+            margin-left: 60em;
+            font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+            
         }
         .header-links2 {
             display: flex;
-            gap: 15em; /* Spazio tra i link */
-            margin-left: 24em;
-            font-family: 'Lato', sans-serif; /* Cambia il font dei link */
+            gap: 6em; /* Spazio tra i link */
+            margin-left: 34em;
+            font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+        }
+         .header-links3 {
+            display: flex;
+            gap: 6em; /* Spazio tra i link */
+            margin-left: 43em;
+            font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+        }
+        .header-links4 {
+            display: flex;
+            gap: 4em; /* Spazio tra i link */
+            margin-left: 35em;
+            font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
         }
 
         header a { 
             text-decoration: none; 
-            color: white; /* Cambia il colore del testo dei link per adattarsi al nuovo background */
+            color: rgb(0, 0, 0); /* Cambia il colore del testo dei link per adattarsi al nuovo background */
             font-size: 3em; /* Puoi modificare la dimensione del font se necessario */
+            font-size: 1.2em; /* Modifica la dimensione del font dei link */
         }
         .header-links a:hover {
-    color: #8080ff;
+    color: red;
 }
    .header-links2 a:hover {
-    color: #8080ff;
+    color:red;
 }
 .main-section {
     display: flex;

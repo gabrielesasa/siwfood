@@ -32,9 +32,10 @@ public class IngredienteController {
 	@Autowired
 	private RicettaService ricettaService;
 	
-	@GetMapping("/cuoco/ingredienti")
-	public String getIngredienti() {		
-		return "/cuoco/ingredienti.html";
+	
+	@GetMapping("/cuoco/sezioneIngredienti")
+	public String getpaginaCuochi() {
+		return "/cuoco/sezioneIngredienti.html";
 		}
 	@GetMapping("/cuoco/visualizzaIngrediente")
 	public String visualizzaIngrediente(Model model) {		
