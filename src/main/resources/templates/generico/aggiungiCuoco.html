@@ -12,7 +12,9 @@
 	
 	
 	<h1>Aggiungi ricetta</h1>
-	<form th:action="@{/generico/aggiungiCuoco/{utenteid}(utenteid=${user.id})}" method="POST" th:object="${cuoco}">
+	<form th:action="@{/generico/aggiungiCuoco}" method="POST" th:object="${cuoco}">
+	<input type="hidden" name="utenteid" th:value="${user.id}" />
+    <input type="hidden" name="id" th:value="${credentials.id}" />
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>

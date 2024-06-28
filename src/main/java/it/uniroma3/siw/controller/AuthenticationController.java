@@ -39,7 +39,7 @@ public class AuthenticationController {
 		return "/generico/formRegistrazione.html";
 		}
 	@PostMapping("/generico/registrazione")
-    public String registerUser(@RequestParam("sonocuoco") boolean sonocuoco,@ModelAttribute("user") User user,
+    public String registerUser(@ModelAttribute("user") User user,
                  @ModelAttribute("credentials") Credentials credentials,@ModelAttribute("cuoco") Cuoco cuoco,
                  Model model) {
 
@@ -48,15 +48,18 @@ public class AuthenticationController {
             credentialsService.saveCredentials(credentials);
             userService.saveUser(user);
             model.addAttribute("user", user);
-            if(sonocuoco) {
+            model.addAttribute("credentials", credentials);
+            System.out.println("ciaooooo");
+           /* if(sonocuoco) {
             	credentials.setRole("CUOCO");
+            	
             	credentialsService.saveCredentials(credentials);
             	model.addAttribute("cuoco", new Cuoco());
             	return "generico/aggiungiCuoco.html";
-            }
+            }*/
             return "/generico/index.html";
     }
-	@GetMapping(value = "generico/login") 
+	@GetMapping("/login") 
 	public String showLoginForm (Model model) {
 		return "/generico/formLogin";
 	}

@@ -2,6 +2,8 @@ package it.uniroma3.siw.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.repository.CuocoRepository;
@@ -13,8 +15,14 @@ public class CuocoService {
 	public Iterable<Cuoco>findAll(){
 		return cuocoRepository.findAll();
 	}
+	@Transactional(isolation = Isolation.SERIALIZABLE)
 	public Cuoco findById(Long id) {
 		return cuocoRepository.findById(id).get();
+	}
+	@Transactional(isolation = Isolation.SERIALIZABLE)
+	public Cuoco save(Cuoco cuoco) {
+		return cuocoRepository.save(cuoco);
+		
 	}
 }
 

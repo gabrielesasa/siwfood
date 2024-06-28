@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.UserRepository;
@@ -23,7 +25,7 @@ public class UserService {
      * @param id the id of the User to retrieve from the DB
      * @return the retrieved User, or null if no User with the passed ID could be found in the DB
      */
-  
+   @Transactional(isolation = Isolation.SERIALIZABLE)
     public User getUser(Long id) {
     	Optional<User> result = this.userRepository.findById(id);
         return result.orElse(null);
@@ -36,6 +38,7 @@ public class UserService {
      * @throws DataIntegrityViolationException if a User with the same username
      *                              as the passed User already exists in the DB
      */
+   @Transactional(isolation = Isolation.SERIALIZABLE)
     public User saveUser(User user) {
         return this.userRepository.save(user);
     }

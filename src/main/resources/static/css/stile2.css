@@ -1,76 +1,57 @@
-<<<<<<< HEAD
-@charset "ISO-8859-1";
-body { 
-	background-image: url('/images/kn2.jpg');
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/index1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: "Geneva";
-    color:red;
-}
-
-a { 
-	text-decoration: none; 
-    color: darkgrey;
-}
-
-a:hover { 
-	text-decoration: underline; 
-}
-
-label {
-	width: 8em;
-	display: inline-block;
+    color: red;
 }
 
 header {
-  background-color: rgb(98, 192, 144);
-  color: white;
-  height: 1.5em;
-  margin-bottom: 0.5em;
-  padding: 0.2em;
-  text-align: right; 
+     background-color: rgba(0, 0, 0, 0.6); /* Sfondo nero traslucido */
+            color: white; /* Testo bianco per contrastare il background nero */
+            height: 3em; /* Aumenta l'altezza dell'header */
+            margin-bottom: 0.5em;
+            padding: 1.3em; /* Aumenta il padding per un aspetto più grande */
+            text-align: right; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distribuisce lo spazio tra gli elementi */
+        }
+
+        .header-links {
+            display: flex;
+            gap: 10em; /* Spazio tra i link */
+            margin-left: 15em;
+            font-family: 'Lato', sans-serif; /* Cambia il font dei link */
+        }
+
+        header a { 
+            text-decoration: none; 
+            color: white; /* Cambia il colore del testo dei link per adattarsi al nuovo background */
+            font-size: 3em; /* Puoi modificare la dimensione del font se necessario */
+        }
+.main-section {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center; /* Centra verticalmente il contenuto */
+    min-height: calc(100vh - 3em); /* Altezza minima pari all'altezza della finestra meno l'altezza dell'intestazione */
+      background-color: rgba(255, 255, 255, 0.5); /* Sfondo bianco traslucido */
+}
+.main-section img {
+            margin-top: 60px; /* Abbassa il logo di 20px */
+        }
+.centered-photo {
+    max-width: 100%; /* Larghezza massima della foto al 100% della larghezza del contenitore */
+    text-align: center; /* Allinea la foto al centro */
 }
 
-header a { 
-	text-decoration: none; 
-    color: white;
-    font-size: 0.6em;
-=======
-@charset "ISO-8859-1";
-body { 
-	background-image: url('/images/kn2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: "Geneva";
-    color:red;
-}
-
-a { 
-	text-decoration: none; 
-    color: darkgrey;
-}
-
-a:hover { 
-	text-decoration: underline; 
-}
-
-label {
-	width: 8em;
-	display: inline-block;
-}
-
-header {
-  background-color: rgb(98, 192, 144);
-  color: white;
-  height: 1.5em;
-  margin-bottom: 0.5em;
-  padding: 0.2em;
-  text-align: right; 
-}
-
-header a { 
-	text-decoration: none; 
-    color: white;
-    font-size: 0.6em;
->>>>>>> 04cce707a1616cbceb271732c90277dc0be9dcc0
+.centered-photo img {
+    max-width: 100%; /* Larghezza massima dell'immagine al 100% della larghezza del suo contenitore */
+    height: auto; /* Altezza automatica mantenendo l'aspetto originale */
+    display: block; /* Rende l'immagine un blocco per centrarla correttamente */
+    margin: 0 auto; /* Margine automatico per centrare l'immagine orizzontalmente */
 }

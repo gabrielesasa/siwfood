@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.CuocoRepository;
 import it.uniroma3.siw.repository.UserRepository;
+import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.CuocoService;
 import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validator.CuocoValidator;
@@ -33,6 +36,11 @@ public class CuocoController {
 	private UserRepository userRepository;
 	@Autowired 
 	private UserService userService;
+	@Autowired 
+	private CredentialsService credentialsService;
+	@Autowired 
+	private CredentialsRepository credentialsRepository;
+	
 	@GetMapping("/generico/paginacuochi")
 	public String getCuoco(Model model) {		
 		model.addAttribute("cuochi", this.cuocoService.findAll());
@@ -77,18 +85,21 @@ public class CuocoController {
 		 }else
 		return "admin/aggiungiCuoco";
 	}
-	@PostMapping("generico/aggiungiCuoco/{id}")
-	public String genericoNuovaCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco,@PathVariable("id") Long id,BindingResult bindingResult, Model model) {
+	@PostMapping("generico/aggiungiCuoco")
+	public String genericoNuovaCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco,@RequestParam("utenteid") Long utenteId,
+            @RequestParam("id") Long credentialsId,BindingResult bindingResult, Model model) {
 		this.cuocoValidator.validate(cuoco, bindingResult);
+		Credentials credentials=this.credentialsService.getCredentials(credentialsId);
+		User user=this.userService.getUser(utenteId);
 		 if (!bindingResult.hasErrors()) {
-		Cuoco cuoco2=this.cuocoRepository.save(cuoco);
-		System.out.println(id);
-		User user=this.userRepository.findById(id).get();
-		System.out.println(cuoco2);
-		System.out.println("idsssssssssssssssssssssssssssssssss");
-		System.out.println(cuoco2.getId());
-		user.setCuoco(cuoco2);
-		this.userRepository.save(user);
+	    
+		Cuoco cuoco2=this.cuocoService.save(cuoco);
+	   
+	    user.setCuoco(cuoco2);
+	    this.userService.saveUser(user);
+	    this.credentialsService.saveCredentials(credentials);
+	    System.out.println("ccccccccccccccccccccccccccccccccccccccccccccccccccc");
+	    System.out.println(credentials.getPassword());
 		return "cuoco/indexCuoco";
 		 }else
 		return "generico/index";

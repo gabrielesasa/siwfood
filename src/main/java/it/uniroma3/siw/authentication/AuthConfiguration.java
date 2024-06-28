@@ -45,7 +45,7 @@ public class AuthConfiguration {
         .cors().disable()
         .authorizeHttpRequests()
             // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-            .requestMatchers(HttpMethod.GET, "/**", "/generico/**", "/generico/", "/css/**", "/images/**", "favicon.ico").permitAll()
+            .requestMatchers(HttpMethod.GET, "/", "/generico/**", "/generico/", "/css/**", "/images/**", "favicon.ico").permitAll()
             // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
             .requestMatchers(HttpMethod.POST, "/generico/**").permitAll()
             .requestMatchers(HttpMethod.GET, "/cuoco/aggiungiRicetta\",\"/cuoco/aggiungiIngrediente.html\"").hasAnyAuthority(CUOCO_ROLE,ADMIN_ROLE)

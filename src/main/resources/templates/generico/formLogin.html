@@ -5,33 +5,35 @@
 	<title>
 		SiwFood - Login
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="stylesheet" href="/css/stilelogin.css" />
+	
 </head>
 
 <body>
-	<header>
-		
-	</header>
-	<h1>Login</h1>
-	<form th:action="@{/login}" method="POST">
-			<div>
-				<span>Username:</span>
-				<span><input name="username" type="text" required /></span>
-			</div>
-			<div>
-				<span>Password:</span>
-				<span><input name="password" type="password" required /></span>
-			</div>
-			<div>
-				<span th:if="${param.error != null}">Username o password errati</span>
-			</div>
-			<div>
-				<span><button type="submit">Login</button></span>
-			</div>
-	</form>
-	<div>
-		<a th:href="@{/generico/formRegistrazione}" th:text="Registrati">Registrati</a>
-	</div>
+	
+
+ 
+    
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form th:action="@{/login}" method="POST">
+        <h3>Login </h3>
+
+        <label for="username">Username</label>
+        <input name="username" type="text" required />
+
+        <label for="password">Password</label>
+       <input name="password" type="password" required />
+	<span th:if="${param.error != null}">Username o password errati</span>
+        <button type="submit">Login</button>
+        </div>
+    </form>
+	
+	
 </body>
 
 </html>
