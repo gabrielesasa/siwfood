@@ -27,25 +27,28 @@ header {
             gap: 6em; /* Spazio tra i link */
             margin-left: 60em;
             font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
-            
+            font-style: italic;
         }
         .header-links2 {
             display: flex;
             gap: 6em; /* Spazio tra i link */
             margin-left: 34em;
             font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+            font-style: italic;
         }
          .header-links3 {
             display: flex;
             gap: 6em; /* Spazio tra i link */
             margin-left: 43em;
             font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+            font-style: italic;
         }
         .header-links4 {
             display: flex;
             gap: 4em; /* Spazio tra i link */
             margin-left: 35em;
             font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
+            font-style: italic;
         }
 
         header a { 
@@ -60,6 +63,7 @@ header {
    .header-links2 a:hover {
     color:red;
 }
+
 .main-section {
     display: flex;
     justify-content: center; /* Centra orizzontalmente il contenuto */

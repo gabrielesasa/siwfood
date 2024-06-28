@@ -3,9 +3,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Menu</title>
+<link rel="stylesheet" href="/css/stileSezioneCuochi.css" />
 </head>
 <body>
-	<h1>Cuochi</h1>
+<header>
+<div class="header-links3">
+            <a href="/generico/menu">Ricettario</a>
+            <a href="/cuoco/sezioneRicette">Sezione Ricette</a>
+           <a href="/cuoco/sezioneIngredienti">Sezione Ingredinti</a>
+           <a href="/logout"> Logout</a>
+        </div>
+</header>
+	<div class="cheflogo">
+        <img src="/images/logochef.png" alt="Logo Chef">
+    </div>
 	<div th:if="${cuochi==null || cuochi.isEmpty()}">Non ci sono ricette nel sistema</div>
 	<ul>
 		<li th:each="cuoco : ${cuochi}">

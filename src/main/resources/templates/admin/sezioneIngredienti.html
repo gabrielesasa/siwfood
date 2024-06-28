@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Menu</title>
+<title>SezioneIngredienti</title>
+<link rel="stylesheet" href="/css/stileSezioneIngredienti.css" />
 </head>
 <body>
-	<h1>ingredienti</h1>
+<header>
+
+</header>
+	<div class="ingrelogo">
+        <img src="/images/logoingrediente.png" alt="Logo Chef">
+    </div>
 	<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
 	<ul>
 		<li th:each="ingrediente : ${ingredienti}">

@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background: none;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/Ingredienti4.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; /* Centra l'immagine */
+    filter: blur(2px);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+header {
+    background-color: #FFFFFF; /* Sfondo bianco traslucido */
+    color: black; /* Testo nero per contrastare il background */
+    height: 3em; /* Altezza dell'header */
+    padding: 1em; /* Padding per un aspetto più grande */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra il contenuto */
+}
+
+.header-links3 {
+    display: flex; /* Usa il modello di layout flexbox */
+    gap: 2em; /* Spazio tra i link */
+    font-family: 'Dmsans', sans-serif;
+    font-style: italic; /* Stile corsivo */
+     margin-right: 10px; /* Aggiunge spazio a destra del link */
+}
+
+.header-links3 a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #000000; /* Colore del testo nero */
+    font-family: 'Dmsans', sans-serif; /* Font personalizzato */
+    font-style: italic; /* Stile corsivo */
+    font-size: 1.2em; /* Dimensione del font */
+    transition: color 0.3s ease; /* Transizione del colore */
+}
+
+.header-links3 a:hover {
+    color: #ff0000; /* Cambia il colore al passaggio del mouse */
+}
+
+.ingrelogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Altezza della sezione logo */
+    margin-bottom: 1em; /* Margine inferiore */
+}
+
+.ingrelogo img {
+    max-width: 270px; /* Imposta una larghezza massima per l'immagine del logo */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+}
+
+h1 {
+    text-align: center; /* Allinea il titolo al centro */
+    margin-top: 20px; /* Margine superiore */
+    color: #ffffff; /* Testo bianco */
+    font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
+    font-size: 2.5em; /* Dimensione del font */
+}
+
+ul {
+    list-style-type: none; /* Rimuove i punti elenco */
+    padding: 0; /* Padding interno */
+    margin: 20px auto; /* Margini automatici sopra e sotto, centrato orizzontalmente */
+    max-width: 600px; /* Larghezza massima dell'elenco */
+}
+
+li {
+    background-color: rgba(255, 255, 255, 0.8); /* Sfondo bianco traslucido */
+    padding: 15px; /* Padding interno */
+    margin-bottom: 10px; /* Margine inferiore */
+    border-radius: 5px; /* Bordo arrotondato */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra */
+}
+
+a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #007bff; /* Colore del link */
+    transition: color 0.3s ease; /* Transizione del colore */
+}
+
+a:hover {
+    color: #0056b3; /* Cambia il colore al passaggio del mouse */
+}
+
+button {
+    background-color: #007bff; /* Colore di sfondo del bottone */
+    color: white; /* Colore del testo del bottone */
+    border: none; /* Rimuove il bordo */
+    padding: 10px 20px; /* Padding interno */
+    border-radius: 5px; /* Bordo arrotondato */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    transition: background-color 0.3s ease; /* Transizione del colore di sfondo */
+     margin-right: 10px; /* Aggiunge spazio a destra del link */
+     margin-left: 10px; /* Aggiunge spazio a destra del link */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cambia il colore di sfondo al passaggio del mouse */
+}
