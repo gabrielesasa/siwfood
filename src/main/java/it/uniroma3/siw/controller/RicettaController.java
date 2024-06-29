@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,8 @@ import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.CuocoService;
 import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.RicettaService;
+import it.uniroma3.siw.validator.RicettaValidator;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -44,6 +47,8 @@ public class RicettaController {
 	private CuocoRepository cuocoRepository;
 	@Autowired 
 	private CredentialsService credentialsService;
+	@Autowired
+	private RicettaValidator ricettaValidator;
 	@GetMapping("/generico/paginaricette")
 	public String getRicette(Model model) {		
 		model.addAttribute("ricette", this.ricettaService.findAll());
@@ -71,9 +76,14 @@ public class RicettaController {
 		return "/cuoco/sezioneRicette.html";
 		}
 	@PostMapping("cuoco/nuovaRicetta")
-	public String nuovaRicetta(@ModelAttribute("ricetta") Ricetta ricetta, Model model) {
+	public String nuovaRicetta(@Valid @ModelAttribute("ricetta") Ricetta ricetta,BindingResult bindingResult, Model model) {
+		model.addAttribute("cuochi",this.cuocoRepository.findAll());
+		this.ricettaValidator.validate(ricetta, bindingResult);
+		if (!bindingResult.hasErrors()) {
 		this.ricettaRepository.save(ricetta);
 		return "/admin/indexAdmin";
+		}else
+			return"/cuoco/aggiungiRicetta";
 	}
 	@GetMapping("/cuoco/aggiungiRicetta")
 	public String formnuovaRicetta(Model model) {
@@ -137,7 +147,7 @@ public class RicettaController {
 	}
 	
 	@PostMapping("cuoco/aggiornaRicetta/{id}")
-	public String formAggiornaNomeRicetta(@PathVariable("id") Long id, @RequestParam("nuovaDescrizione") String nuovaDescrizione,@RequestParam("nuovaImmagine") String nuovaImmagine, Model model) {
+	public String formAggiornaNomeRicetta(@Valid @PathVariable("id") Long id,BindingResult bindingResult, @RequestParam("nuovaDescrizione") String nuovaDescrizione,@RequestParam("nuovaImmagine") String nuovaImmagine, Model model) {
 		Ricetta ricetta=this.ricettaRepository.findById(id).get();
 		ricetta.setDescrizione(nuovaDescrizione);
 		ricetta.setImmagine(nuovaImmagine);

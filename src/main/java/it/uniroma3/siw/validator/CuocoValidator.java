@@ -18,13 +18,13 @@ public class CuocoValidator implements Validator {
 	    Cuoco cuoco = (Cuoco)o;
 	    if (cuoco.getNome() != null && cuoco.getYear() != null
 	        && cuocoRepository.existsByNomeAndYear(cuoco.getNome(), cuoco.getYear())) {
-	        errors.reject("movie.duplicate");
+	        errors.reject("cuoco.duplicate");
 	    }
 	}
 
 	@Override
 	public boolean supports(Class<?> aClass) {
-	    return Movie.class.equals(aClass);
+	    return Cuoco.class.equals(aClass);
 	}
 
 }

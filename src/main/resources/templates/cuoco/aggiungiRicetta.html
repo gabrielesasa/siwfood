@@ -33,6 +33,8 @@
 	</li><li>
 		<div>
 			<label>URL immagine:</label> <span><input type="text" th:field="${ricetta.immagine}" /></span>
+			<span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}">
+		    </span>
 		</div>
 		</li><li>
 		<div>
@@ -44,7 +46,7 @@
                 </label>
             </div>
 			</span>
-		    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+		    
 		    
 		</div>
 		</li><li><div>

@@ -102,17 +102,27 @@ public class CuocoController {
 	    System.out.println("ccccccccccccccccccccccccccccccccccccccccccccccccccc");
 	    System.out.println(credentials.getPassword());
 		return "cuoco/indexCuoco";
-		 }else
+		 }else {
 		return "generico/index";
+		 }
 	}
+	
 	@PostMapping("admin/aggiornaCuoco/{id}")
-	public String formAggiornaNomeCuoco(@PathVariable("id") Long id, @RequestParam("nuovoAnno") Integer nuovoAnno,@RequestParam("nuovoImmagine") String nuovoImmagine, Model model) {
+	 public String formAggiornaNomeCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco2,BindingResult bindingResult, @PathVariable("id") Long id, @RequestParam("nuovoAnno") Integer nuovoAnno,@RequestParam("nuovoImmagine") String nuovoImmagine, Model model) {
+		model.addAttribute("cuoco",this.cuocoRepository.findById(id).get());
 		Cuoco cuoco=this.cuocoRepository.findById(id).get();
+		
+		if (!bindingResult.hasErrors()) {
 		cuoco.setYear(nuovoAnno);
 		cuoco.setImmagine(nuovoImmagine);
 		this.cuocoRepository.save(cuoco);
 		return "admin/indexAdmin.html";
-	}
+	}else {
+		
+		return "admin/aggiornaCuoco.html";
+
+		}}
 }
+	
 
 

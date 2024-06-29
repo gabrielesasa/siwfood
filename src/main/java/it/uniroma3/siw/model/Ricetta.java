@@ -22,7 +22,7 @@ public class Ricetta {
 	@NotBlank
 	private String nome;
 	private String immagine;
-	@NotNull
+	@NotBlank
 	private String descrizione;
 	@ManyToOne
 	private Cuoco cuoco;

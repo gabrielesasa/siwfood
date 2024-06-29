@@ -8,6 +8,6 @@ import it.uniroma3.siw.model.Ingrediente;
 
 @Repository
 public interface IngredienteRepository extends CrudRepository<Ingrediente, Long> {
-
+	public boolean existsByNome(String nome);
 }
 

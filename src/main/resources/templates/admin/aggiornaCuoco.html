@@ -13,7 +13,7 @@
 	<header></header>
 	<h2>Aggiorna Cuoco</h2>
 	<div th:if="${cuoco}">
-    <h2 th:text="${cuoco.nome}"> nome cuoco</h2>
+    <h2 th:text="${cuoco.nome}"> nom cuoco</h2>
 	<ul>
 	<form th:action="@{/admin/aggiornaCuoco/{id}(id=${cuoco.id})}" method="POST" th:object="${cuoco}">
   		<div th:if="${#fields.hasGlobalErrors()}">
