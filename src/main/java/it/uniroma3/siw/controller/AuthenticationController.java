@@ -48,16 +48,9 @@ public class AuthenticationController {
             credentials.setUser(user);
             credentialsService.saveCredentials(credentials);
             userService.saveUser(user);
-            model.addAttribute("user", user);
-            model.addAttribute("credentials", credentials);
-            System.out.println("ciaooooo");
-           /* if(sonocuoco) {
-            	credentials.setRole("CUOCO");
-            	
-            	credentialsService.saveCredentials(credentials);
-            	model.addAttribute("cuoco", new Cuoco());
-            	return "generico/aggiungiCuoco.html";
-            }*/
+          
+           
+           
             return "/generico/index.html";
     }
 	@GetMapping("/login") 

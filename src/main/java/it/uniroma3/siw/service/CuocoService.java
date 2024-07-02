@@ -15,11 +15,11 @@ public class CuocoService {
 	public Iterable<Cuoco>findAll(){
 		return cuocoRepository.findAll();
 	}
-	@Transactional(isolation = Isolation.SERIALIZABLE)
+	@Transactional()
 	public Cuoco findById(Long id) {
 		return cuocoRepository.findById(id).get();
 	}
-	@Transactional(isolation = Isolation.SERIALIZABLE)
+	@Transactional()
 	public Cuoco save(Cuoco cuoco) {
 		return cuocoRepository.save(cuoco);
 		

@@ -40,6 +40,8 @@ public class CuocoController {
 	private CredentialsService credentialsService;
 	@Autowired 
 	private CredentialsRepository credentialsRepository;
+	@Autowired
+	GlobalController globalController;
 	
 	@GetMapping("/generico/paginacuochi")
 	public String getCuoco(Model model) {		
@@ -77,6 +79,20 @@ public class CuocoController {
 		model.addAttribute("cuoco", new Cuoco());
 	    return "admin/aggiungiCuoco.html";
 	}
+	@GetMapping("/cuoco/profilo")
+	public String profiloCuoco( Model model) {
+		Credentials credenziali = credentialsService.getCredentials(globalController.getUser());
+		User utente = credenziali.getUser();
+		Cuoco cuoco=this.cuocoRepository.findByUser(utente);
+		if(cuoco!=null) {
+			model.addAttribute("cuoco", this.cuocoRepository.findByUser(utente));
+			
+	    return "cuoco/profilo.html";
+	  }else {
+		  model.addAttribute("cuoco",new Cuoco());
+		  return "cuoco/formCreaCuoco.html";
+	  
+	}}
 	@PostMapping("admin/aggiungiCuoco")
 	public String nuovaCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco,BindingResult bindingResult, Model model) {
 		this.cuocoValidator.validate(cuoco, bindingResult);
@@ -86,24 +102,19 @@ public class CuocoController {
 		 }else
 		return "admin/aggiungiCuoco";
 	}
-	@PostMapping("generico/aggiungiCuoco")
-	public String genericoNuovaCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco,@RequestParam("utenteid") Long utenteId,
-            @RequestParam("id") Long credentialsId,BindingResult bindingResult, Model model) {
+	@PostMapping("cuoco/formCreaCuoco")
+	public String genericoNuovaCuoco(@Valid @ModelAttribute("cuoco") Cuoco cuoco,BindingResult bindingResult, Model model) {
+		Credentials credenziali = credentialsService.getCredentials(globalController.getUser());
+		User utente = credenziali.getUser();
 		this.cuocoValidator.validate(cuoco, bindingResult);
-		Credentials credentials=this.credentialsService.getCredentials(credentialsId);
-		User user=this.userService.getUser(utenteId);
 		 if (!bindingResult.hasErrors()) {
-	    
-		Cuoco cuoco2=this.cuocoService.save(cuoco);
 	   
-	    user.setCuoco(cuoco2);
-	    this.userService.saveUser(user);
-	    this.credentialsService.saveCredentials(credentials);
-	    System.out.println("ccccccccccccccccccccccccccccccccccccccccccccccccccc");
-	    System.out.println(credentials.getPassword());
-		return "cuoco/indexCuoco";
+	    cuoco.setUser(utente);
+	    this.cuocoService.save(cuoco);
+	  
+		return "Cuoco/indexCuoco";
 		 }else {
-		return "generico/index";
+		return "cuoco/aggiungiCuoco";
 		 }
 	}
 	

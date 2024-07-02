@@ -5,14 +5,17 @@
 	<title>
 		Nuova Ricetta
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="stylesheet" href="/css/stileSezioneCuochi.css" />
 </head>
 
 <body>
 	
 	
-	<h1>Aggiungi ricetta</h1>
-	<form th:action="@{/generico/aggiungiCuoco}" method="POST" th:object="${cuoco}">
+	<h1>Aggiungi Cuoco</h1>
+	
+	<form th:action="@{/cuoco/formCreaCuoco}" method="POST" th:object="${cuoco}">
+	<ul>
+	<li>
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>
@@ -23,20 +26,22 @@
 		    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
 		    </span>
 		</div>
-
+</li><li>
 		<div>
 			<label>Anno:</label> <span><input type="text" th:field="${cuoco.year}" /></span>
 		    <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">
 		    </span>
 		</div>
-
+</li><li>
 		<div>
 			<label>URL immagine:</label> <span><input type="text" th:field="${cuoco.immagine}" /></span>
 		</div>
-	
+	</li><li>
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
+		</li>
+		</ul>
 	</form>
 </body>
 

@@ -36,7 +36,8 @@ public class IngredienteController {
 	private RicettaService ricettaService;
 	@Autowired
 	private IngredienteValidator ingredienteValidator;
-	
+	@Autowired
+	GlobalController globalController;
 	
 	@GetMapping("/cuoco/sezioneIngredienti")
 	public String getpaginaCuochi() {

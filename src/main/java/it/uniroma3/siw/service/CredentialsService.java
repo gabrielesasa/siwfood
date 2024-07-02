@@ -4,8 +4,10 @@ package it.uniroma3.siw.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.repository.CredentialsRepository;
@@ -38,4 +40,22 @@ public class CredentialsService {
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
       return credentialsRepository.save(credentials);
     }
+
+    public Credentials saveCuocoCredentials(Credentials credentials) {
+    	credentials.setRole(Credentials.CUOCO_ROLE);
+        credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
+      return credentialsRepository.save(credentials);
+    }
+
+
+	@Transactional
+	public Credentials getCredentials(UserDetails user) {
+		if(user != null) {
+			return this.credentialsRepository.findByUsername(user.getUsername()).orElse(null);
+		}
+		else {
+			return null;
+		}
+	}
+
 }

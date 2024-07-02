@@ -23,6 +23,7 @@ import it.uniroma3.siw.model.Cuoco;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.IngredientePerRicetta;
 import it.uniroma3.siw.model.Ricetta;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CuocoRepository;
 import it.uniroma3.siw.repository.RicettaRepository;
 import it.uniroma3.siw.service.CredentialsService;
@@ -49,6 +50,8 @@ public class RicettaController {
 	private CredentialsService credentialsService;
 	@Autowired
 	private RicettaValidator ricettaValidator;
+	@Autowired
+	GlobalController globalController;
 	@GetMapping("/generico/paginaricette")
 	public String getRicette(Model model) {		
 		model.addAttribute("ricette", this.ricettaService.findAll());
@@ -77,11 +80,15 @@ public class RicettaController {
 		}
 	@PostMapping("cuoco/nuovaRicetta")
 	public String nuovaRicetta(@Valid @ModelAttribute("ricetta") Ricetta ricetta,BindingResult bindingResult, Model model) {
+		Credentials credenziali = credentialsService.getCredentials(globalController.getUser());
+		User utente = credenziali.getUser();
+		Cuoco cuoco=this.cuocoRepository.findByUser(utente);
 		model.addAttribute("cuochi",this.cuocoRepository.findAll());
 		this.ricettaValidator.validate(ricetta, bindingResult);
 		if (!bindingResult.hasErrors()) {
+			ricetta.setCuoco(cuoco);
 		this.ricettaRepository.save(ricetta);
-		return "/admin/indexAdmin";
+		return "/cuoco/indexCuoco";
 		}else
 			return"/cuoco/aggiungiRicetta";
 	}
@@ -125,7 +132,10 @@ public class RicettaController {
 
 	@GetMapping("/cuoco/sezioneRicette2")
 	public String AggiornaRicette(Model model) {
-		model.addAttribute("ricette",this.ricettaRepository.findAll());
+		Credentials credenziali = credentialsService.getCredentials(globalController.getUser());
+		User utente = credenziali.getUser();
+		Cuoco cuoco=this.cuocoRepository.findByUser(utente);
+		model.addAttribute("ricette",this.ricettaRepository.findRicetteByCuoco(cuoco));
 	    return "cuoco/sezioneRicette2.html";
 	}
 	@GetMapping("/cuoco/cancellaRicetta")

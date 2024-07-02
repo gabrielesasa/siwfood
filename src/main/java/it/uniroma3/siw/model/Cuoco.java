@@ -26,11 +26,27 @@ public class Cuoco {
 	private String immagine;
 	@OneToMany(mappedBy="cuoco")
 	private List<Ricetta> ricette;
+	@OneToOne
+	private User user;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public List<Ricetta> getRicette() {
+		return ricette;
+	}
+	public void setRicette(List<Ricetta> ricette) {
+		this.ricette = ricette;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public String getNome() {
 		return nome;
