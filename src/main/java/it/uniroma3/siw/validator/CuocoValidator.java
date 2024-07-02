@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.model.Cuoco;
-import it.uniroma3.siw.model.Movie;
 import it.uniroma3.siw.repository.CuocoRepository;
 
 @Component
