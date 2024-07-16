@@ -10,8 +10,16 @@
 
 <body>
 	
-	
-	<h1>Aggiungi ricetta</h1>
+	<header>
+	<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/logout"> Logout</a>
+          
+        </div></header>
+	<h1>Aggiungi ricett</h1>
 	
 	<form th:action="@{/admin/aggiungiCuoco}" method="POST" th:object="${cuoco}">
 	<ul>

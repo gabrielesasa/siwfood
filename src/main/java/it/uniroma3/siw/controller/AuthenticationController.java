@@ -51,7 +51,7 @@ public class AuthenticationController {
           
            
            
-            return "/generico/index.html";
+            return "generico/index.html";
     }
 	@GetMapping("/login") 
 	public String showLoginForm (Model model) {
@@ -88,5 +88,9 @@ public class AuthenticationController {
 		}
         return "/generico/index.html";
 	}
+	@GetMapping("/generico/accessDenied")
+    public String accessDenied() {
+        return "generico/accessoNegato.html"; // Nome del template della pagina di errore
+    }
 }
 

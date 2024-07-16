@@ -7,9 +7,11 @@
 </head>
 <body>
 <header>
-	
+	<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
 	  <div class="header-links">
-            <a href="/generico/paginaricette">Home</a>
+            <a href="/">Home</a>
             <a href="/login">Login</a>
           
         </div>
@@ -19,7 +21,7 @@
 	<div th:if="${cuochi==null || cuochi.isEmpty()}">Non ci sono ricette nel sistema</div>
 	<ul>
 		<li th:each="cuoco : ${cuochi}">
-			<a th:href="@{'/generico/cuoco' + '/' + ${cuoco.id}}" th:text="${cuoco.nome} ">cuoco)</a>
+			<a th:href="@{'/generico/cuoco' + '/' + ${cuoco.id}}" th:text="${cuoco.cognome} ">cuoco)</a>
 		</li>
 	</ul>
 </body>

@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -48,8 +49,8 @@ public class AuthConfiguration {
             .requestMatchers(HttpMethod.GET, "/", "/generico/**", "/generico/", "/css/**", "/images/**", "favicon.ico").permitAll()
             // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
             .requestMatchers(HttpMethod.POST, "/generico/**").permitAll()
-            .requestMatchers(HttpMethod.GET, "/cuoco/aggiungiRicetta/","/cuoco/aggiungiIngrediente.html/","/admin/aggiornaRicetta/**").hasAnyAuthority(CUOCO_ROLE,ADMIN_ROLE)
-            .requestMatchers(HttpMethod.POST, "/cuoco/nuovaRicetta/**","/cuoco/nuovoIngrediente/","/cuoco/aggiornaRicetta/**","cuoco/nuovoIngrediente","/cuoco/nuovaRicetta").hasAnyAuthority(CUOCO_ROLE,ADMIN_ROLE)
+            .requestMatchers(HttpMethod.GET, "/cuoco/aggiungiRicetta/","/cuoco/aggiungiIngrediente.html/","/admin/aggiornaRicetta/**", "cuoco/formCreaCuoco/**").hasAnyAuthority(CUOCO_ROLE,ADMIN_ROLE)
+            .requestMatchers(HttpMethod.POST, "/cuoco/nuovaRicetta/**","/cuoco/nuovoIngrediente/","/cuoco/aggiornaRicetta/**","cuoco/nuovoIngrediente","/cuoco/nuovaRicetta","cuoco/formCreaCuoco/**").hasAnyAuthority(CUOCO_ROLE,ADMIN_ROLE)
 
             .requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
             .requestMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
@@ -77,6 +78,12 @@ public class AuthConfiguration {
             .clearAuthentication(true)
             .permitAll();
     return httpSecurity.build();
+  }
+  @Bean
+  public AccessDeniedHandlerImpl accessDeniedHandler() {
+      AccessDeniedHandlerImpl accessDeniedHandler = new AccessDeniedHandlerImpl();
+      accessDeniedHandler.setErrorPage("/accessDenied");
+      return accessDeniedHandler;
   }
 }
 

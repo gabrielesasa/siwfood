@@ -19,8 +19,19 @@ header {
             display: flex;
             align-items: center;
             justify-content: space-between; /* Distribuisce lo spazio tra gli elementi */
+            position: relative;
         }
+        .immagine {
+    position: absolute;
+    top: -8;
+    left: -55%;
+    overflow: hidden; /* Assicura che l'immagine non fuoriesca dai bordi dell'header */
+}
 
+.immagine img {
+    max-width: 18%; /* Imposta una larghezza massima, ad esempio 100px */
+    height: auto; /* Lascia che l'altezza si adatti alla larghezza mantenendo le proporzioni */
+}
         .header-links {
             display: flex;
             gap: 6em; /* Spazio tra i link */

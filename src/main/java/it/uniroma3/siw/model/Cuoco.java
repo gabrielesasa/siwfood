@@ -3,10 +3,14 @@ package it.uniroma3.siw.model;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
@@ -20,9 +24,14 @@ public class Cuoco {
 	private Long id;
 	@NotBlank
 	private String nome;
+	@NotBlank
+	private String cognome;
 	@Min(1000)
 	@Max(2006)
 	private Integer year;
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(columnDefinition = "TEXT")
 	private String immagine;
 	@OneToMany(mappedBy="cuoco")
 	private List<Ricetta> ricette;
@@ -36,6 +45,12 @@ public class Cuoco {
 		this.id = id;
 	}
 	
+	public String getCognome() {
+		return cognome;
+	}
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
 	public List<Ricetta> getRicette() {
 		return ricette;
 	}

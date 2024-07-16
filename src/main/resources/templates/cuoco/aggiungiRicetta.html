@@ -9,10 +9,19 @@
 </head>
 
 <body>
-	
+	<header>
+	<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+		<div class="header-links">
+           <a href="/">Home</a>
+            
+           <a href="/logout"> Logout</a>
+        </div>
+	</header>
 	
 	<h1>Aggiungi ricetta</h1>
-	<form th:action="@{/cuoco/nuovaRicetta}" method="POST" th:object="${ricetta}">
+	<form th:action="@{/cuoco/nuovaRicetta}" method="POST" th:object="${ricetta}" enctype="multipart/form-data">
 	<ul><li>
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
@@ -32,24 +41,13 @@
 		</div>
 	</li><li>
 		<div>
-			<label>URL immagine:</label> <span><input type="text" th:field="${ricetta.immagine}" /></span>
-			<span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}">
-		    </span>
-		</div>
-		</li><li>
-		<div>
-			<label>Scegli cuoco:</label> 
-            <div th:each="cuoco : ${cuochi}">
-                <label>
-                    <input type="radio" th:field="${ricetta.cuoco}" th:value="${cuoco.id}"/> 
-                    <span th:text="${cuoco.nome}"></span>
-                </label>
-            </div>
-			</span>
-		    
-		    
-		</div>
-		</li><li><div>
+		
+		<label>Immagine:</label>
+                    <input type="file"  name="imageFile" accept="image/*" required />
+                
+	
+		</div></li>
+		<li><div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
 		</li>

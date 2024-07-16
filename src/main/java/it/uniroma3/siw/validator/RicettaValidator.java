@@ -16,8 +16,7 @@ public class RicettaValidator implements Validator {
 	@Override
 	public void validate(Object o, Errors errors) {
 		Ricetta ricetta = (Ricetta)o;
-	    if (ricetta.getNome() != null && ricetta.getCuoco() != null
-	        && ricettaRepository.existsByNomeAndCuoco(ricetta.getNome(), ricetta.getCuoco())) {
+	    if (ricetta.getNome() != null && ricettaRepository.existsByNome(ricetta.getNome())) {
 	        errors.reject("ricetta.duplicate");
 	    }
 	}

@@ -10,7 +10,15 @@
 
 <body>
 	
-	<header></header>
+	<header>
+	<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/logout"> Logout</a>
+          
+        </div></header>
 	<div th:if="${ingrediente}">
 	<h1 class="h1-ingre" th:text="${ingrediente.nome}"> nome Ingrediente></h1>
 	<form th:action="@{/admin/aggiornaIngrediente}" method="POST" >

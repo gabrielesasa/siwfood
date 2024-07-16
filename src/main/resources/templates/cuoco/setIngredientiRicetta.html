@@ -5,6 +5,16 @@
 <link rel="stylesheet" href="/css/stileSezioneIngredienti.css" />
 </head>
 <body>
+<header>
+<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/logout"> Logout</a>
+          
+        </div>
+</header>
 	<h1>INGREDIENTI</h1>
 	<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ricette nel sistema</div>
 	<ul>

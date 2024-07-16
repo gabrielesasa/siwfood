@@ -4,10 +4,15 @@ package it.uniroma3.siw.model;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;	
@@ -20,12 +25,15 @@ public class Ricetta {
 	private Long id;
 	@NotBlank
 	private String nome;
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(columnDefinition = "TEXT")
 	private String immagine;
 	@NotBlank
 	private String descrizione;
 	@ManyToOne
 	private Cuoco cuoco;
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<IngredientePerRicetta> ingredienteRicetta;
 	public Long getId() {
 		return id;

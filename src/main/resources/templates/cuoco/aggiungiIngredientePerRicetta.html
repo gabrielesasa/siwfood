@@ -10,7 +10,16 @@
 
 <body>
 	
-	
+	<header>
+<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/logout"> Logout</a>
+          
+        </div>
+</header>
 	<h1 class="h1-ingre">Aggiungi Quantita</h1>
 	<form th:action="@{/cuoco/aggiungiIngredienteRicetta/{ricettaId}/{ingredienteId}(ricettaId=${ricetta.id}, ingredienteId=${ingrediente.id})}" method="POST" th:object="${ingredientePerRicetta}">
   		<ul><li class="li-ingre">

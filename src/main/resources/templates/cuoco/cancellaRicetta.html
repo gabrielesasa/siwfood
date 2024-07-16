@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Menu</title>
+<title>Ricette</title>
+<link rel="stylesheet" href="/css/stilericetta.css" />
 </head>
 <body>
+<header>
+	<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+          
+        </div>
+	
+	</header>
 	<h1>Ricette</h1>
 	<div th:if="${ricette==null || ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
 	<ul>
 		<li th:each="ricetta : ${ricette}">
-			<a th:href="@{'/cuoco/CancellaRicetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome} ">Up!
+			<a th:href="@{'/cuoco/cancellaRicetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome} ">Up!
 				(2000)</a>
+			
 		</li>
 	</ul>
 </body>

@@ -24,7 +24,7 @@ header {
         }
         .immagine {
     position: absolute;
-    top: -10;
+    top: -8;
     left: -55%;
     overflow: hidden; /* Assicura che l'immagine non fuoriesca dai bordi dell'header */
 }
@@ -61,14 +61,6 @@ header {
             margin-left: 35em;
             font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
             font-style: italic;
-        }
-         .header-links5 {
-            display: flex;
-            gap: 4em; /* Spazio tra i link */
-            margin-left: 30em;
-            font-family: 'Dmsans', sans-serif; /* Cambia il font dei link */
-            font-style: italic;
-            font-size:117%;
         }
 
         header a { 

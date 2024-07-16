@@ -5,12 +5,20 @@
 <link rel="stylesheet" href="/css/stilericetta.css" />
 </head>
 <body>
-<header></header>
+<header>
+	<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+		<div class="header-links">
+           <a href="/">Home</a>
+           <a href="/logout"> Logout</a>
+        </div>
+	</header>
 	<h1>Ricette</h1>
 	<div th:if="${ricette==null || ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
 	<ul>
 		<li th:each="ricetta : ${ricette}">
-			<a th:href="@{'/generico/Ricetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome} ">cuoco)</a>
+			<a th:href="@{'/generico/Ricetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome} ">ricette)</a>
 			<a th:href="@{'/admin/aggiornaRicetta/' + ${ricetta.id}}">
 				<button type="button">Modifica</button>
 			</a>

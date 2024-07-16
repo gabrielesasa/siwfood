@@ -6,13 +6,21 @@
 </head>
 <body>
 <header>
-
+<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/logout"> Logout</a>
+          
+        </div>
 </header>
 	<div class="ingrelogo">
         <img src="/images/logoingrediente.png" alt="Logo Chef">
     </div>
-	<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
+	
 	<ul>
+	<li th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema </li>
 		<li th:each="ingrediente : ${ingredienti}">
 		<a th:href="@{'/cuoco/ingrediente' + '/' + ${ingrediente.id}}" th:text="${ingrediente.nome} ">cuoco)</a>
 			<a th:href="@{'/admin/aggiornaIngrediente/' + ${ingrediente.id}}">

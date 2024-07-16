@@ -3,17 +3,26 @@
 
 <head>
 	<title>
-		Nuova Ricetta
+		Nuova Cuoco
 	</title>
 	<link rel="stylesheet" href="/css/stileSezioneCuochi.css" />
 </head>
 
 <body>
-	
+	<header>
+			<div class="immagine">
+	<a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
+	</div>
+	  <div class="header-links">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+          
+        </div>
+	</header>
 	
 	<h1>Aggiungi Cuoco</h1>
 	
-	<form th:action="@{/cuoco/formCreaCuoco}" method="POST" th:object="${cuoco}">
+	<form th:action="@{/cuoco/formCreaCuoco}" method="POST" th:object="${cuoco}" enctype="multipart/form-data">
 	<ul>
 	<li>
   		<div th:if="${#fields.hasGlobalErrors()}">
@@ -34,8 +43,14 @@
 		</div>
 </li><li>
 		<div>
-			<label>URL immagine:</label> <span><input type="text" th:field="${cuoco.immagine}" /></span>
+			<label>Cognome:</label> <span><input type="text" th:field="${cuoco.cognome}" /></span>
+		    <span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}">
+		    </span>
 		</div>
+</li><li>
+		<label>Immagine:</label>
+                    <input type="file"  name="imageFile" accept="image/*" required />
+                
 	</li><li>
 		<div>
 			<span><button type="submit">Conferma</button></span>

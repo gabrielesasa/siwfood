@@ -22,34 +22,36 @@ body::before {
 }
 
 header {
-    background-color: #FFFFFF; /* Sfondo bianco traslucido */
-    color: black; /* Testo nero per contrastare il background */
-    height: 3em; /* Altezza dell'header */
-    padding: 1em; /* Padding per un aspetto più grande */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra il contenuto */
+     background-color:white; /* Sfondo nero traslucido */
+            color: white; /* Testo bianco per contrastare il background nero */
+            height: 1.3em; /* Aumenta l'altezza dell'header */
+            margin-bottom: 0.5em;
+            padding: 1.3em; /* Aumenta il padding per un aspetto più grande */
+            text-align: right; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distribuisce lo spazio tra gli elementi */
+            position: relative;
+        }
+        .immagine {
+    position: absolute;
+    top: -8;
+    left: -55%;
+    overflow: hidden; /* Assicura che l'immagine non fuoriesca dai bordi dell'header */
 }
 
-.header-links3 {
-    display: flex; /* Usa il modello di layout flexbox */
-    gap: 2em; /* Spazio tra i link */
-    font-family: 'Dmsans', sans-serif;
-    font-style: italic; /* Stile corsivo */
+.immagine img {
+    max-width: 18%; /* Imposta una larghezza massima, ad esempio 100px */
+    height: auto; /* Lascia che l'altezza si adatti alla larghezza mantenendo le proporzioni */
 }
+.header-links {
+            display: flex;
+            gap: 6em; /* Spazio tra i link */
+            margin-left: 77em;
+            font-family: 'Forum', sans-serif; /* Cambia il font dei link */
+            font-style: italic;
+        }
 
-.header-links3 a {
-    text-decoration: none; /* Rimuove la sottolineatura */
-    color: #000000; /* Colore del testo nero */
-    font-family: 'Dmsans', sans-serif; /* Font personalizzato */
-    font-style: italic; /* Stile corsivo */
-    font-size: 1.2em; /* Dimensione del font */
-    transition: color 0.3s ease; /* Transizione del colore */
-}
-
-.header-links3 a:hover {
-    color: #ff0000; /* Cambia il colore al passaggio del mouse */
-}
 
 .cheflogo {
     display: flex;
@@ -63,9 +65,7 @@ header {
     max-width: 180px; /* Imposta una larghezza massima per l'immagine del logo */
     height: auto; /* Mantiene le proporzioni dell'immagine */
 }
-.header-links3 a:hover {
-    color: #ff0000; /* Cambia il colore al passaggio del mouse */
-}
+
 
 .img1 {
     display: flex;
@@ -81,17 +81,28 @@ header {
     height: auto; /* Mantiene le proporzioni dell'immagine */
 }
 label.label1{
+	position:absolute;
 	text-align: center;
-	margin-top: 200px; /* Allinea il titolo al centro */
-    margin-left: 400px; /* Margine superiore */
+	margin-top: 0%; /* Allinea il titolo al centro */
+    margin-left: 41%; /* Margine superiore */
     color: #ffffff; /* Testo bianco */
     font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
     font-size: 2.5em; /* Dimens*/
 }
 label.label2{
+	position:absolute;
 	text-align: center; /* Allinea il titolo al centro */
-    margin-bottom: -7em; /* Margine superiore */
-    margin-left: 400px;
+    margin-top:20%; /* Margine superiore */
+    margin-left: 41%;
+    color: #ffffff; /* Testo bianco */
+    font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
+    font-size: 2.5em; /* Dimens*/
+}
+label.label3{
+	position:absolute;
+	text-align: center; /* Allinea il titolo al centro */
+    margin-top:10%; /* Margine superiore */
+    margin-left: 38.5%;
     color: #ffffff; /* Testo bianco */
     font-family: 'Times New Roman', Times, serif; /* Font personalizzato */
     font-size: 2.5em; /* Dimens*/
@@ -130,15 +141,7 @@ li {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra */
 }
 
-a {
-    text-decoration: none; /* Rimuove la sottolineatura */
-    color: #007bff; /* Colore del link */
-    transition: color 0.3s ease; /* Transizione del colore */
-}
 
-a:hover {
-    color: #0056b3; /* Cambia il colore al passaggio del mouse */
-}
 
 button {
     background-color: #007bff; /* Colore di sfondo del bottone */

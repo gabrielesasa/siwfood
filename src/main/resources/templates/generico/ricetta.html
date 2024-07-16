@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ricetta</title>
-<link rel="stylesheet" href="/css/stilePiatto.css" />
+    <title>Ricetta</title>
+    <link rel="stylesheet" href="/css/stilePiatto.css" />
 </head>
 <body>
-
-  <div class="recipe-container" th:if="${ricetta}">
-    <div class="background-image" th:style="'background-image: url(' + ${ricetta.immagine} + ')'">
-      <h1 class="recipe-name" th:text="${ricetta.nome}">nome ricetta</h1>
-      <div class="recipe-description" th:text="${ricetta.descrizione}">descrizione</div>
+<header>
+    <div class="immagine">
+        <a href="/"> <img src="/images/logonero2.png" alt="Logo"></a>
     </div>
-    <div class="cuoco-info" th:if="${ricetta.cuoco}">
-      
+    <div class="header-links">
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
     </div>
+</header>
+<div class="recipe-container" th:if="${ricetta}" th:style="'background-image: url(data:image/jpeg;base64,' + ${ricetta.immagine} + ');'">
+    <h1 class="recipe-name" th:text="${ricetta.nome}">nome ricetta</h1>
+    <div class="recipe-description" th:text="${ricetta.descrizione}">descrizione</div>
     <div class="cuoco-info" th:if="${ricetta.cuoco}">
-    	<a th:href="@{'/generico/cuoco' + '/' + ${ricetta.cuoco.id}}" class="button" text="Cuoco delle Ricetta">Cuoco</a>
-    </ul>
-    <a th:href="@{'/generico/visualizzaIngredienteRicetta'+ '/' + ${ricetta.id} }" class="button" text="Ingrediente">Ingredienti</a>
-  </div>
-  <div th:unless="${ricetta}">Non esiste</div>
+        <a th:href="@{'/generico/cuoco' + '/' + ${ricetta.cuoco.id}}" class="button">Cuoco</a>
+       </div> <div class="cuoco-info" th:if="${ricetta.cuoco}">
+        <a th:href="@{'/generico/visualizzaIngredienteRicetta' + '/' + ${ricetta.id}}" class="button2">Ingredienti</a>
+    </div>
+</div>
+<div th:unless="${ricetta}">Non esiste</div>
 </body>
 </html>
